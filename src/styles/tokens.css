@@ -1,0 +1,19 @@
+/* src/styles/tokens.css */
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
+
+    --bg-white: #ffffff;
+
+    --text-grey: #6b7378;
+
+    --surface-overlay: #f2f2f2;
+
+    --text-primary: #171717;
+    --text-muted: #6b7378;
+
+    --color-primary: #1f1f1f;
+
+    --tubitak-red: #DF1F26;
+}

@@ -1,0 +1,50 @@
+/* HERO */
+
+.hero {
+    position: relative;
+    height: 60vh;
+
+    background-image: url("/images/hero.jpg");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+}
+
+/* Koyu overlay okunabilirlik için */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* İçerik */
+.heroContent {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.heroContent h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.heroContent p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Normal içerik */
+.content {
+    padding: 6rem 2rem;
+    background: var(--background);
+    color: var(--foreground);
+}

@@ -1,0 +1,117 @@
+/* ----- NAVBAR ----- */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2rem;
+
+  background: transparent;
+  color: white;
+
+  transition: background 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+
+  z-index: 999;
+}
+
+.scrolled {
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: inherit;
+}
+
+.localeSwitch {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+/* ----- MENU OVERLAY ----- */
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--surface-overlay);
+  color: var(--text-primary);
+
+  transform: translateY(-100%);
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.open {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-width: 600px;
+}
+
+.menuLink {
+  padding: 0.6rem 0;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: inherit;
+  transition: font-size 0.2s ease;
+}
+
+.menuLink:hover {
+  font-size: 2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.menuLogoWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}

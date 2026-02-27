@@ -1,8 +1,7 @@
+import PublicationsPageView from "@/components/pages/publications/publicationsPage";
 
 export default function PublicationsPage () {
     return (
-        <h1>
-            Publications
-        </h1>
+        <PublicationsPageView locale="en"/>
     );
 }

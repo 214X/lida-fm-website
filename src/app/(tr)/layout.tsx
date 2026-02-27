@@ -1,6 +1,6 @@
 // src/app/(tr)/layout.tsx
 
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/components/layout/navbar/Navbar";
 
 export default function TrLayout({
     children,
