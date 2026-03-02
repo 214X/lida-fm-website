@@ -1,5 +1,4 @@
 /* ----- NAVBAR ----- */
-
 .navbar {
   position: fixed;
   top: 0;
@@ -7,23 +6,25 @@
   width: 100%;
   height: 4.2rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 2rem;
-
   background: transparent;
   color: white;
 
-  transition: background 0.3s ease,
-              color 0.3s ease,
-              box-shadow 0.3s ease;
-
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   z-index: 999;
 }
 
-.scrolled {
+.navbarInner {
+  height: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scrolled,
+.navbar:hover {
   background: var(--background);
   color: var(--foreground);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
