@@ -16,4 +16,8 @@ export const routes: Record<
         tr: "/projeler",
         en: "/en/projects",
     },
+    contact: {
+        tr: "/iletisim",
+        en: "/en/contact",
+    }
 };

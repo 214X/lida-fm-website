@@ -1,6 +1,8 @@
 // src/app/en/layout.tsx
 
 import Navbar from "@/components/layout/navbar/Navbar";
+import { manrope } from "@/lib/fonts";
+import Footer from "@/components/layout/footer/Footer";
 
 export default function EnLayout({
     children,
@@ -9,10 +11,11 @@ export default function EnLayout({
 }) {
     return (
         <html lang="en">
-        <body>
-            <Navbar />
-            {children}
-        </body>
+            <body className={manrope.variable}>
+                <Navbar />
+                {children}
+                <Footer locale="tr"/>
+            </body>
         </html>
     );
 }
