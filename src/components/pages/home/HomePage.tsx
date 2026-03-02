@@ -12,11 +12,24 @@ export default function HomePage({ locale }: HomePageProps) {
     return (
         <>
         <section className={styles.hero}>
+            {/* Background Video */}
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className={styles.video}
+            >
+                <source src="videos/home/home-hero-background.mp4" type="video/mp4" />
+            </video>
+
+            {/* Overlay */}
             <div className={styles.overlay} />
 
+            {/* Content */}
             <div className={styles.heroContent}>
-            <h1>{content.title}</h1>
-            <p>{content.description}</p>
+                <h1>{content.title}</h1>
+                <p>{content.description}</p>
             </div>
         </section>
 
