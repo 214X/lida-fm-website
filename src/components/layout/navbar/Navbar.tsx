@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { routes } from "@/lib/routes";
 import { useState, useEffect } from "react";
+import { Menu } from "lucide-react";
 import styles from "./NavbarStyles.module.css";
 
 export default function Navbar() {
@@ -73,13 +74,16 @@ export default function Navbar() {
         </Link>
 
         <div className={styles.rightSection}>
-          <button
-            className={styles.menuButton}
-            onClick={() => setIsOpen(true)}
-          >
-            ☰
-          </button>
+          {/* MENU BUTTON */}
+        <button
+          className={styles.menuButton}
+          onClick={() => setIsOpen(true)}
+          aria-label="Open menu"
+        >
+          <Menu size={24} />
+        </button>
 
+          {/* LANGUAGE BUTTON */}
           <Link
             href={routes[currentRouteKey][oppositeLocale]}
             className={styles.localeSwitch}
