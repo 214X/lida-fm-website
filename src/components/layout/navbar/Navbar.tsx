@@ -101,6 +101,8 @@ export default function Navbar() {
             ✕
           </button>
 
+
+          {/* ---- MENU ----- */}
           <nav className={styles.menuContent}>
             {/* Menu Logo */}
             <Link 

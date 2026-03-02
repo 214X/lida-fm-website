@@ -7,11 +7,11 @@ type HomeContent = {
 
 export const homeContent: Record<Locale, HomeContent> = {
     tr: {
-        title: "Lida-FM (Türkçe)",
-        description: "Proje açıklaması",
+        title: "TDML",
+        description: "Biz kimiz?",
     },
     en: {
-        title: "Lida-FM (English)",
-        description: "Project description",
+        title: "TDML",
+        description: "Who are us?",
     },
 };
