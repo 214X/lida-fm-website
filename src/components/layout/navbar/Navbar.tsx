@@ -130,6 +130,13 @@ export default function Navbar() {
             </Link>
 
             <Link 
+              href={routes.home[locale]} 
+              className={styles.menuLink}
+              onClick={closeMenu}>
+              {locale === "tr" ? "Hakkımızda" : "About us"}
+            </Link>
+
+            <Link 
               href={routes.publications[locale]} 
               className={styles.menuLink}
               onClick={closeMenu}>

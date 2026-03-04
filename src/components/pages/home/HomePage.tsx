@@ -1,5 +1,9 @@
 import { Locale } from "@/types/locale";
 import { homeContent } from "./homeContent";
+import { ReactNode } from "react";
+import { FiUsers } from "react-icons/fi";
+import { FiMail } from "react-icons/fi";
+import { FiBookOpen } from "react-icons/fi";
 import styles from "./HomePage.module.css";
 
 type HomePageProps = {
@@ -27,9 +31,29 @@ export default function HomePage({ locale }: HomePageProps) {
             <div className={styles.overlay} />
 
             {/* Content */}
-            <div className={styles.heroContent}>
-                <h1>{content.title}</h1>
-                <p>{content.description}</p>
+            <div className={styles.heroWrapper}>
+                <div className={styles.buttonsContainer}>
+                    <HeroButton
+                        name={locale==="tr" ? "Hakkımızda" : "About us"}
+                        icon={<FiUsers />}
+                    />
+                    <div className={styles.buttonSeperatorLine}></div>
+                    <HeroButton
+                        name={locale==="tr" ? "Yayınlarımız" : "Our publications"}
+                        icon={<FiBookOpen />}
+                    />
+                    <div className={styles.buttonSeperatorLine}></div>
+                    <HeroButton
+                        name={locale==="tr" ? "İletişim" : "Contact"}
+                        icon={<FiMail />}
+                    />
+                </div>
+                
+                <div className={styles.heroContent}>
+                    <h1 className={styles.abbreviation}>{content.abbreviation}</h1>
+                    <h1 className={styles.name}>{content.name}</h1>
+                    <p>{content.description}</p>
+                </div>
             </div>
         </section>
 
@@ -40,5 +64,21 @@ export default function HomePage({ locale }: HomePageProps) {
             </p>
         </section>
         </>
+    );
+}
+
+
+
+// HERO BUTTON
+type HeroButtonProps = {
+    name: string;
+    icon?: ReactNode;
+};
+function HeroButton({ name, icon }: HeroButtonProps) {
+    return (
+        <button className={styles.heroButtonContainer}>
+            {icon && <span className={styles.icon}>{icon}</span>}
+            <span>{name}</span>
+        </button>
     );
 }

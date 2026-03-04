@@ -8,6 +8,10 @@ export const routes: Record<
         tr: "/",
         en: "/en",
     },
+    aboutUs: {
+        tr: "/hakkimizda",
+        en: "/en/about-us",
+    },
     publications: {
         tr: "/yayinlar",
         en: "/en/publications",
