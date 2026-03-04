@@ -14,7 +14,7 @@ export default function EnLayout({
             <body className={manrope.variable}>
                 <Navbar />
                 {children}
-                <Footer locale="tr"/>
+                <Footer locale="tr" />
             </body>
         </html>
     );
