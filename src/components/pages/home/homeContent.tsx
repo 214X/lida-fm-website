@@ -1,17 +1,20 @@
 import type { Locale } from "@/types/locale";
 
 type HomeContent = {
-    title: string;
+    abbreviation: string;
+    name: string;
     description: string;
 };
 
 export const homeContent: Record<Locale, HomeContent> = {
     tr: {
-        title: "TDML",
-        description: "Biz kimiz?",
+        abbreviation: "TDML",
+        name: "Termodinamik Metroloji Laboratuvarı",
+        description: "",
     },
     en: {
-        title: "TDML",
-        description: "Who are us?",
+        abbreviation: "TDML",
+        name: "Thermodynamics Metrology Laboratory",
+        description: "",
     },
 };
