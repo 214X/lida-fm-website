@@ -23,5 +23,11 @@ export const routes: Record<
     contact: {
         tr: "/iletisim",
         en: "/en/contact",
+    },
+    // LABS STARTS
+    humidityLab: {
+        tr: "/laboratuvarlar/nem",
+        en: "/en/laboratories/humidity",
     }
+    // LABS ENDS
 };

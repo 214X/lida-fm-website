@@ -1,15 +1,14 @@
-/* ----- NAVBAR ----- */
+/* NAVBAR */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 4.2rem;
-
   background: transparent;
   color: white;
-
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: background .3s ease, color .3s ease, box-shadow .3s ease;
   z-index: 999;
 }
 
@@ -27,7 +26,7 @@
 .navbar:hover {
   background: var(--background);
   color: var(--foreground);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
 .logoWrapper {
@@ -44,9 +43,10 @@
 .menuButton {
   background: none;
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
   color: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .localeSwitch {
@@ -55,23 +55,18 @@
   font-weight: 500;
 }
 
-/* ----- MENU OVERLAY ----- */
+/* OVERLAY */
 
 .menuOverlay {
   position: fixed;
   inset: 0;
-
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  background-color: var(--surface-overlay);
+  background: var(--surface-overlay);
   color: var(--text-primary);
-
   transform: translateY(-100%);
-  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-
+  transition: transform .5s cubic-bezier(.77,0,.175,1);
   pointer-events: none;
   z-index: 9999;
 }
@@ -88,31 +83,84 @@
   max-width: 600px;
 }
 
+/* LINKS */
+
 .menuLink {
-  padding: 0.6rem 0;
+  padding: .7rem 0;
   font-size: 1.8rem;
   text-decoration: none;
   color: inherit;
-  transition: font-size 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  transition: transform .2s ease;
 }
 
 .menuLink:hover {
-  font-size: 2rem;
+  transform: translateX(6px);
 }
+
+.chevron {
+  opacity: .7;
+  margin-top: 2px;
+  transition: transform .25s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* SUBMENU */
+
+.subMenu {
+  height: 0;
+  overflow: hidden;
+  transition: height .35s cubic-bezier(.22,1,.36,1);
+}
+
+.subMenuOpen {
+  height: 110px;
+}
+
+.subMenuInner {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  margin-left: 1rem;
+  margin-top: .4rem;
+  border-left: 2px solid rgba(0,0,0,.08);
+  padding-left: 1rem;
+}
+
+.subMenuLink {
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: inherit;
+  opacity: .75;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.subMenuLink:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+/* CLOSE BUTTON */
 
 .closeButton {
   position: absolute;
   top: 2rem;
   right: 2rem;
-
   background: none;
   border: none;
   font-size: 2rem;
   cursor: pointer;
 }
 
+/* MENU LOGO */
+
 .menuLogoWrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }

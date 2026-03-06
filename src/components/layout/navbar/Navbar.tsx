@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { routes } from "@/lib/routes";
 import { useState, useEffect } from "react";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import styles from "./NavbarStyles.module.css";
 
 export default function Navbar() {
@@ -17,52 +17,40 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   const [isOpen, setIsOpen] = useState(false);
+  const [labsOpen, setLabsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(true);
 
-
-  // Scroll kontrolü
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Route değişince menüyü kapat
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  // Scroll lock
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
   const currentRouteKey =
     (Object.keys(routes) as Array<keyof typeof routes>).find((key) => {
-      return (
-        routes[key].tr === pathname ||
-        routes[key].en === pathname
-      );
+      return routes[key].tr === pathname || routes[key].en === pathname;
     }) ?? "home";
 
   return (
     <nav
-      className={`${styles.navbar} ${
-        scrolled ? styles.scrolled : ""
-      }`}
+      className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div className={styles.navbarInner}>
-        {/* Logo */}
         <Link href="/" className={styles.logoWrapper}>
           <Image
             src={
-              scrolled || hovered
+              scrolled || hovered
                 ? "/images/ume-logo/UME-Yatay.png"
                 : "/images/ume-logo/UME-Yatay-Beyaz.png"
             }
@@ -74,16 +62,14 @@ export default function Navbar() {
         </Link>
 
         <div className={styles.rightSection}>
-          {/* MENU BUTTON */}
-        <button
-          className={styles.menuButton}
-          onClick={() => setIsOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu size={24} />
-        </button>
+          <button
+            className={styles.menuButton}
+            onClick={() => setIsOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu size={24} />
+          </button>
 
-          {/* LANGUAGE BUTTON */}
           <Link
             href={routes[currentRouteKey][oppositeLocale]}
             className={styles.localeSwitch}
@@ -92,12 +78,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Overlay */}
-        <div
-          className={`${styles.menuOverlay} ${
-            isOpen ? styles.open : ""
-          }`}
-        >
+        <div className={`${styles.menuOverlay} ${isOpen ? styles.open : ""}`}>
           <button
             className={styles.closeButton}
             onClick={() => setIsOpen(false)}
@@ -105,16 +86,14 @@ export default function Navbar() {
             ✕
           </button>
 
-
-          {/* ---- MENU ----- */}
           <nav className={styles.menuContent}>
-            {/* Menu Logo */}
-            <Link 
-              href="/" 
-              className={styles.menuLogoWrapper} 
-              onClick={closeMenu}>
+            <Link
+              href="/"
+              className={styles.menuLogoWrapper}
+              onClick={closeMenu}
+            >
               <Image
-                src={"/images/ume-logo/UME-Yatay.png"}
+                src="/images/ume-logo/UME-Yatay.png"
                 alt="MenuLogo"
                 width={250}
                 height={1}
@@ -122,38 +101,76 @@ export default function Navbar() {
               />
             </Link>
 
-            <Link 
-              href={routes.home[locale]} 
-              className={styles.menuLink}
-              onClick={closeMenu}>
+            <Link href={routes.home[locale]} className={styles.menuLink} onClick={closeMenu}>
               {locale === "tr" ? "Ana Sayfa" : "Home"}
             </Link>
 
-            <Link 
-              href={routes.home[locale]} 
-              className={styles.menuLink}
-              onClick={closeMenu}>
+            <Link href={routes.home[locale]} className={styles.menuLink} onClick={closeMenu}>
               {locale === "tr" ? "Hakkımızda" : "About us"}
             </Link>
 
-            <Link 
-              href={routes.publications[locale]} 
-              className={styles.menuLink}
-              onClick={closeMenu}>
+            <Link href={routes.publications[locale]} className={styles.menuLink} onClick={closeMenu}>
               {locale === "tr" ? "Yayınlar" : "Publications"}
             </Link>
 
-            <Link 
-              href={routes.projects[locale]} 
+            {/* ----- LABORATORIES MENU STARTS ----- */}
+            <button
               className={styles.menuLink}
-              onClick={closeMenu}>
+              onClick={() => setLabsOpen(!labsOpen)}
+            >
+              {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
+              <ChevronDown
+                size={16}
+                className={`${styles.chevron} ${
+                  labsOpen ? styles.rotate : ""
+                }`}
+              />
+            </button>
+
+            <div
+              className={`${styles.subMenu} ${
+                labsOpen ? styles.subMenuOpen : ""
+              }`}
+            >
+              <div className={styles.subMenuInner}>
+                <Link
+                  href={routes.humidityLab[locale]}
+                  className={styles.subMenuLink}
+                  onClick={closeMenu}
+                >
+                  {locale === "tr"
+                    ? "Nem Laboratuvarı"
+                    : "Humidity Laboratory"}
+                </Link>
+
+                <Link
+                  href="/laboratories/pressure"
+                  className={styles.subMenuLink}
+                  onClick={closeMenu}
+                >
+                  {locale === "tr"
+                    ? "Basınç Laboratuvarı"
+                    : "Pressure Laboratory"}
+                </Link>
+
+                <Link
+                  href="/laboratories/temperature"
+                  className={styles.subMenuLink}
+                  onClick={closeMenu}
+                >
+                  {locale === "tr"
+                    ? "Sıcaklık Laboratuvarı"
+                    : "Temperature Laboratory"}
+                </Link>
+              </div>
+            </div>
+            {/* ----- LABORATORIES MENU ENDS ----- */}
+
+            <Link href={routes.projects[locale]} className={styles.menuLink} onClick={closeMenu}>
               {locale === "tr" ? "Projeler" : "Projects"}
             </Link>
 
-            <Link 
-              href={routes.contact[locale]}
-              className={styles.menuLink}
-              onClick={closeMenu}>
+            <Link href={routes.contact[locale]} className={styles.menuLink} onClick={closeMenu}>
               {locale === "tr" ? "İletişim" : "Contact"}
             </Link>
           </nav>
