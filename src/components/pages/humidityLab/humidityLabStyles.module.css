@@ -14,13 +14,13 @@
     align-items: center;
 
     color: white;
-    background-color: var(--tubitak-red);
+    background-color: #343a40;
 }
 
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.52);
+    background-color: rgba(223, 31, 38, 0.95);
 }
 
 .heroContent {
@@ -77,14 +77,16 @@
 
 .sectionRed {
     padding: 5rem 2rem;
-    background: var(--tubitak-red);
-    color: #fff;
+    background: #fcfcfc;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    color: var(--foreground);
 }
 
 .sectionDark {
     padding: 5rem 2rem;
-    background: #1c1c1e;
-    color: #fff;
+    background: #f4f5f7;
+    color: var(--foreground);
 }
 
 .container {
@@ -110,7 +112,7 @@
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--tubitak-red);
     margin-bottom: 0.5rem;
 }
 
@@ -125,7 +127,7 @@
 .sectionTitleLight {
     font-size: clamp(1.6rem, 3.5vw, 2.4rem);
     font-weight: 700;
-    color: #ffffff;
+    color: var(--foreground);
     margin-bottom: 0.8rem;
     line-height: 1.25;
 }
@@ -140,7 +142,7 @@
 .sectionTextLight {
     font-size: 1rem;
     line-height: 1.75;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--text-grey);
     max-width: 820px;
 }
 
@@ -152,7 +154,7 @@
 
 .titleUnderlineLight {
     display: inline-block;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 3px solid var(--tubitak-red);
     padding-bottom: 0.15rem;
 }
 
@@ -178,7 +180,9 @@
 ============================================================ */
 
 .statsStrip {
-    background: var(--tubitak-red);
+    background: #ffffff;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
     padding: 3rem 2rem;
 }
 
@@ -196,7 +200,7 @@
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
-    color: white;
+    color: var(--foreground);
 }
 
 .statValue {
@@ -207,7 +211,7 @@
 
 .statLabel {
     font-size: 0.88rem;
-    opacity: 0.85;
+    color: var(--text-grey);
     line-height: 1.4;
     max-width: 160px;
     text-align: center;
@@ -251,6 +255,7 @@
 
 .areaIcon {
     font-size: 2rem;
+    color: var(--tubitak-red);
     margin-bottom: 0.8rem;
     display: block;
 }
@@ -358,8 +363,9 @@
 }
 
 .uncertaintyTable th {
-    background: var(--tubitak-red);
-    color: white;
+    background: #f4f5f7;
+    color: var(--foreground);
+    border-bottom: 2px solid var(--tubitak-red);
     font-size: 0.88rem;
     font-weight: 600;
     text-align: left;
@@ -402,19 +408,20 @@
 }
 
 .calibrationCard {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
     border-radius: 10px;
     padding: 2rem;
-    transition: background 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .calibrationCard:hover {
-    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
 }
 
 .calibrationCard h3 {
-    color: #ffffff;
+    color: var(--foreground);
     font-size: 1.05rem;
     font-weight: 700;
     margin-bottom: 0.7rem;
@@ -422,7 +429,7 @@
 
 .calibrationCard p {
     font-size: 0.93rem;
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--text-grey);
     line-height: 1.65;
 }
 
@@ -452,6 +459,7 @@
 
 .serviceIcon {
     font-size: 2rem;
+    color: var(--tubitak-red);
     margin-bottom: 0.8rem;
     display: block;
 }
@@ -481,18 +489,20 @@
 }
 
 .sectorTag {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #ffffff;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    color: var(--foreground);
     border-radius: 100px;
     padding: 0.45rem 1.1rem;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .sectorTag:hover {
-    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--tubitak-red);
+    color: var(--tubitak-red);
+    background: #fffafa;
 }
 
 /* ============================================================

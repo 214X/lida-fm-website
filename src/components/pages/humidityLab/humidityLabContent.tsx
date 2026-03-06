@@ -1,4 +1,16 @@
 import { Locale } from "@/types/locale";
+import {
+    Droplets,
+    Thermometer,
+    Box,
+    FlaskConical,
+    Microscope,
+    ClipboardCheck,
+    BarChart3,
+    GraduationCap,
+    FileText,
+    Globe
+} from "lucide-react";
 
 export const HumidityLabContent: Record<
     Locale,
@@ -16,7 +28,7 @@ export const HumidityLabContent: Record<
         stats: { value: string; label: string }[];
 
         areasTitle: string;
-        areas: { icon: string; title: string; text: string }[];
+        areas: { icon: React.ReactNode; title: string; text: string }[];
 
         instrumentsTitle: string;
         instrumentsIntro: string;
@@ -30,7 +42,7 @@ export const HumidityLabContent: Record<
         calibrations: { title: string; text: string }[];
 
         servicesTitle: string;
-        services: { icon: string; title: string; text: string }[];
+        services: { icon: React.ReactNode; title: string; text: string }[];
 
         sectorsTitle: string;
         sectors: string[];
@@ -63,32 +75,32 @@ export const HumidityLabContent: Record<
         areasTitle: "Çalışma Alanları",
         areas: [
             {
-                icon: "💧",
+                icon: <Droplets size={32} strokeWidth={1.5} />,
                 title: "Bağıl Nem Ölçümleri",
                 text: "Gazlarda ve havada bulunan bağıl nem miktarının yüksek doğrulukla ölçülmesi ve kalibrasyonu.",
             },
             {
-                icon: "🌡️",
+                icon: <Thermometer size={32} strokeWidth={1.5} />,
                 title: "Çiy Noktası Ölçümleri",
                 text: "Çiy ve kırağı noktası sıcaklıklarının referans ölçüm sistemleri ile belirlenmesi. Su buharının kısmi basıncı, fraksiyonu ve oranının ölçümü.",
             },
             {
-                icon: "🌡️",
+                icon: <Thermometer size={32} strokeWidth={1.5} />,
                 title: "Hava Sıcaklığı Ölçümleri",
                 text: "ITS-90 uluslararası sıcaklık ölçeğine izlenebilir sıcaklık ölçümleri. -10 °C ile 90 °C aralığında hassas ölçümler gerçekleştirilmektedir.",
             },
             {
-                icon: "🧱",
+                icon: <Box size={32} strokeWidth={1.5} />,
                 title: "Malzemede Rutubet Ölçümleri",
                 text: "Katı ve toz halindeki malzemelerde su miktarının metrolojik yöntemlerle belirlenmesi. Uçucu bileşenler dahil tüm fraksiyonlar ölçülebilmektedir.",
             },
             {
-                icon: "⚗️",
+                icon: <FlaskConical size={32} strokeWidth={1.5} />,
                 title: "Gazlardaki Su Miktarı",
                 text: "Çeşitli gazlardaki su miktarının yüksek doğrulukla ölçülmesi ve izlenebilir kalibrasyon hizmetleri.",
             },
             {
-                icon: "🔬",
+                icon: <Microscope size={32} strokeWidth={1.5} />,
                 title: "Mutlak Nem Ölçümleri",
                 text: "Havanın mutlak nem değerinin SI birimlerine izlenebilir yöntemlerle doğru olarak belirlenmesi.",
             },
@@ -159,32 +171,32 @@ export const HumidityLabContent: Record<
         servicesTitle: "Sunulan Hizmetler",
         services: [
             {
-                icon: "📋",
+                icon: <ClipboardCheck size={32} strokeWidth={1.5} />,
                 title: "İzlenebilir Kalibrasyon",
                 text: "SI birimlerine ve uluslararası standartlara izlenebilir nem ve sıcaklık kalibrasyonu.",
             },
             {
-                icon: "📊",
+                icon: <BarChart3 size={32} strokeWidth={1.5} />,
                 title: "Ölçüm ve Test",
                 text: "Ortam koşulları, endüstriyel süreçler ve ürün kalitesi için nem ve sıcaklık ölçümleri.",
             },
             {
-                icon: "🎓",
+                icon: <GraduationCap size={32} strokeWidth={1.5} />,
                 title: "Eğitim ve Danışmanlık",
                 text: "Nem ölçümleri, belirsizlik hesaplamaları ve uluslararası standartlar hakkında eğitim hizmetleri.",
             },
             {
-                icon: "🔬",
+                icon: <Microscope size={32} strokeWidth={1.5} />,
                 title: "Ar-Ge Desteği",
                 text: "Nem metrolojisi alanındaki araştırma ve geliştirme projelerine teknik destek ve işbirliği.",
             },
             {
-                icon: "📝",
+                icon: <FileText size={32} strokeWidth={1.5} />,
                 title: "Teknik Danışmanlık",
                 text: "Ölçüm belirsizliği, cihaz seçimi ve kalibrasyon yöntemi konularında uzman teknik danışmanlık.",
             },
             {
-                icon: "🌐",
+                icon: <Globe size={32} strokeWidth={1.5} />,
                 title: "Uluslararası Karşılaştırma",
                 text: "Milli metroloji enstitüleri ile ortak ölçüm karşılaştırmaları ve izlenebilirlik zincirinin güvence altına alınması.",
             },
@@ -232,32 +244,32 @@ export const HumidityLabContent: Record<
         areasTitle: "Research Areas",
         areas: [
             {
-                icon: "💧",
+                icon: <Droplets size={32} strokeWidth={1.5} />,
                 title: "Relative Humidity Measurements",
                 text: "High-accuracy measurement and calibration of relative humidity content in gases and air.",
             },
             {
-                icon: "🌡️",
+                icon: <Thermometer size={32} strokeWidth={1.5} />,
                 title: "Dew Point Measurements",
                 text: "Determination of dew and frost point temperatures using reference measurement systems. Measurement of partial pressure, fraction and ratio of water vapor.",
             },
             {
-                icon: "🌡️",
+                icon: <Thermometer size={32} strokeWidth={1.5} />,
                 title: "Air Temperature Measurements",
                 text: "Temperature measurements traceable to the ITS-90 international temperature scale. Precise measurements are performed in the range -10 °C to 90 °C.",
             },
             {
-                icon: "🧱",
+                icon: <Box size={32} strokeWidth={1.5} />,
                 title: "Moisture in Materials",
                 text: "Determination of water content in solid and powdery materials using metrological methods. All fractions including volatile components can be measured.",
             },
             {
-                icon: "⚗️",
+                icon: <FlaskConical size={32} strokeWidth={1.5} />,
                 title: "Water Content in Gases",
                 text: "High-accuracy measurement of water content in various gases and traceable calibration services.",
             },
             {
-                icon: "🔬",
+                icon: <Microscope size={32} strokeWidth={1.5} />,
                 title: "Absolute Humidity Measurements",
                 text: "Accurate determination of absolute humidity of air using SI-traceable methods.",
             },
@@ -328,32 +340,32 @@ export const HumidityLabContent: Record<
         servicesTitle: "Services Offered",
         services: [
             {
-                icon: "📋",
+                icon: <ClipboardCheck size={32} strokeWidth={1.5} />,
                 title: "Traceable Calibration",
                 text: "Traceable humidity and temperature calibration to SI units and international standards.",
             },
             {
-                icon: "📊",
+                icon: <BarChart3 size={32} strokeWidth={1.5} />,
                 title: "Measurement & Testing",
                 text: "Humidity and temperature measurements for ambient conditions, industrial processes and product quality.",
             },
             {
-                icon: "🎓",
+                icon: <GraduationCap size={32} strokeWidth={1.5} />,
                 title: "Training & Consultancy",
                 text: "Training services on humidity measurements, uncertainty calculations and international standards.",
             },
             {
-                icon: "🔬",
+                icon: <Microscope size={32} strokeWidth={1.5} />,
                 title: "R&D Support",
                 text: "Technical support and collaboration for research and development projects in the field of humidity metrology.",
             },
             {
-                icon: "📝",
+                icon: <FileText size={32} strokeWidth={1.5} />,
                 title: "Technical Advisory",
                 text: "Expert technical advice on measurement uncertainty, instrument selection and calibration methodology.",
             },
             {
-                icon: "🌐",
+                icon: <Globe size={32} strokeWidth={1.5} />,
                 title: "International Comparisons",
                 text: "Joint measurement comparisons with national metrology institutes and assurance of the traceability chain.",
             },

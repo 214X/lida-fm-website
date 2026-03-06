@@ -16,7 +16,8 @@ export default function HumidityLabPage({ locale }: Props) {
                 <div className={styles.overlay} />
                 <div className={styles.heroContent}>
                     <span className={styles.heroBadge}>
-                        {locale === "tr" ? "Nem Laboratuvarı" : "Humidity Laboratory"}
+                        {/* {locale === "tr" ? "Nem Laboratuvarı" : "Humidity Laboratory"} */}
+                        TDML
                     </span>
                     <h1>{c.title}</h1>
                     <p>{c.heroText}</p>
