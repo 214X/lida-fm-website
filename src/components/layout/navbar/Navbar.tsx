@@ -144,23 +144,13 @@ export default function Navbar() {
                 </Link>
 
                 <Link
-                  href="/laboratories/pressure"
+                  href={routes.radiationTemperatureLab[locale]}
                   className={styles.subMenuLink}
                   onClick={closeMenu}
                 >
                   {locale === "tr"
-                    ? "Basınç Laboratuvarı"
-                    : "Pressure Laboratory"}
-                </Link>
-
-                <Link
-                  href="/laboratories/temperature"
-                  className={styles.subMenuLink}
-                  onClick={closeMenu}
-                >
-                  {locale === "tr"
-                    ? "Sıcaklık Laboratuvarı"
-                    : "Temperature Laboratory"}
+                    ? "Radyasyon Sıcaklığı Laboratuvarı"
+                    : "Radiation Temperature Laboratory"}
                 </Link>
               </div>
             </div>

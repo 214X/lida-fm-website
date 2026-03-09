@@ -3,7 +3,7 @@ import { homeContent } from "./homeContent";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { FiUsers, FiMail, FiBookOpen } from "react-icons/fi";
-import { Droplets, Thermometer, Wind, ArrowRight, Lock } from "lucide-react";
+import { Droplets, Thermometer, Wind, ArrowRight, Lock, RadioTower } from "lucide-react";
 import styles from "./HomePage.module.css";
 import { routes } from "@/lib/routes";
 
@@ -21,7 +21,7 @@ function HeroButton({ name, icon, href }: HeroButtonProps) {
     return (
         <Link href={href} className={styles.heroButtonContainer}>
             {icon && <span className={styles.icon}>{icon}</span>}
-            <span>{name}</span>
+            <span className={styles.heroButtonName}>{name}</span>
         </Link>
     );
 }
@@ -42,15 +42,15 @@ export default function HomePage({ locale }: HomePageProps) {
             active: true,
         },
         {
-            icon: <Thermometer size={36} strokeWidth={1.5} />,
-            slug: "temperature",
-            title: locale === "tr" ? "Sıcaklık Laboratuvarı" : "Temperature Laboratory",
+            icon: <RadioTower size={36} strokeWidth={1.5} />,
+            slug: "radiation-temperature",
+            title: locale === "tr" ? "Radyasyon Sıcaklığı Laboratuvarı" : "Radiation Temperature Laboratory",
             description:
                 locale === "tr"
-                    ? "ITS-90 uluslararası sıcaklık ölçeğine göre izlenebilir sıcaklık ölçüm ve kalibrasyon çalışmaları."
-                    : "Traceable temperature measurement and calibration studies according to the ITS-90 international temperature scale.",
-            href: "#",
-            active: false,
+                    ? "Yüksek sıcaklık ölçümlerinde ITS-90'a izlenebilir kalibrasyon. Gümüş donma noktası ve üzerindeki sıcaklıklarda radyasyon ve kontak sıcaklığı ölçümleri."
+                    : "Traceable calibration to ITS-90 for high-temperature measurements, including radiation and contact temperature above the silver freezing point.",
+            href: routes.radiationTemperatureLab[locale],
+            active: true,
         },
         {
             icon: <Wind size={36} strokeWidth={1.5} />,

@@ -1,5 +1,5 @@
 /* =========================
-   HERO SECTION
+  HERO SECTION
 ========================= */
 
 .hero {
@@ -34,7 +34,7 @@
 }
 
 /* =========================
-   VIDEO BACKGROUND
+  VIDEO BACKGROUND
 ========================= */
 
 .video {
@@ -156,6 +156,7 @@
   align-items: center;
   justify-items: center;
   gap: 0.5rem;
+  text-align: center;
 
   width: 8rem;
 
@@ -177,6 +178,10 @@
   align-items: center;
   font-size: 3.2rem;
   transition: transform 0.25s ease;
+}
+
+.heroButtonName {
+  text-align: center;
 }
 
 .heroButtonContainer:hover {

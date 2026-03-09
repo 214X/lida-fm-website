@@ -28,6 +28,10 @@ export const routes: Record<
     humidityLab: {
         tr: "/laboratuvarlar/nem",
         en: "/en/laboratories/humidity",
+    },
+    radiationTemperatureLab: {
+        tr: "/laboratuvarlar/radyasyon-sicakligi",
+        en: "/en/laboratories/radiation-temperature",
     }
     // LABS ENDS
 };
