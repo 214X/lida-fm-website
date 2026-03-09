@@ -1,10 +1,9 @@
-/* HERO */
-
+/* ─── HERO ─── */
 .hero {
     position: relative;
-    height: 60vh;
+    min-height: 60vh;
 
-    background-image: url("/images/hero.jpg");
+    background-image: url("/images/humidity-page/humidity-her.png");
     background-size: cover;
     background-position: center;
 
@@ -12,15 +11,15 @@
     align-items: center;
 
     color: white;
+    background-color: #343a40;
 }
 
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+    background: linear-gradient(110deg, rgba(223, 31, 38, 0.95) 0%, rgba(223, 31, 38, 0.6) 40%, rgba(169, 36, 36, 0.85) 100%);
 }
 
-/* CONTENT */
 .heroContent {
     position: relative;
     z-index: 2;
@@ -28,156 +27,377 @@
     width: 100%;
     max-width: 1180px;
     margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+}
 
-    padding: 0 2rem;
+.heroBadge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(4px);
 }
 
 .heroContent h1 {
-    font-size: 5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    line-height: 1.1;
 }
 
 .heroContent p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 720px;
+    line-height: 1.7;
     opacity: 0.9;
 }
 
-/* Normal içerik */
-.content {
-    padding: 6rem 2rem;
-    background: var(--background);
-    color: var(--foreground);
+/* ─── MAIN SECTION ─── */
+.section {
+    padding: 5rem 2rem;
+    background: #f8f8f8;
 }
 
-
-/* 
-    --------------------
-    PUBLICATIONS WRAPPER
-    --------------------
-*/
-.publicationsWrapper {
-    max-width: 1180px;
+.container {
+    max-width: 1100px;
     margin: 0 auto;
 }
 
-
-/* 
-    ----------------
-    PUBLICATION CARD
-    ---------------- 
-*/
-.pubCard {
+/* ─── GRID ─── */
+.grid {
     display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 2rem;
-    padding: 3rem 0;
-    border-bottom: 1px solid #e5e5e5;
-    transition: transform 0.25s ease;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: stretch;
 }
 
-.pubCard:hover {
-    transform: translateY(-3px);
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }
 
-.pubDateBox {
+/* ─── INFO COLUMN ─── */
+.infoColumn {
     display: flex;
     flex-direction: column;
-    align-items: center;
-
-    justify-content: center;
+    gap: 1.5rem;
 }
 
-/* DATE */
-.pubDay {
-    font-size: 1.2rem;
-    font-weight: 700;
-    line-height: 0.5;
+.infoTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
     color: var(--tubitak-red);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
 }
 
-.pubMonth {
-    margin-top: 0.4rem;
+.infoHeading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.infoText {
+    color: var(--text-grey);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* ─── CONTACT CARDS ─── */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    background: white;
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    border: 1px solid #efefef;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.1);
+    border-color: #f0d0d1;
+}
+
+.cardIcon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #DF1F26, #8B0000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.cardBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardLabel {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-grey);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.25rem;
+}
+
+.cardValue {
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 1px;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+
+.cardValueLink {
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--tubitak-red);
-    text-transform: uppercase;
+    word-break: break-all;
+    text-decoration: none;
+    transition: text-decoration 0.15s ease;
 }
 
-.dayMonthWrapper {
+.cardValueLink:hover {
+    text-decoration: underline;
+}
+
+/* ─── PERSON CARD ─── */
+.personCard {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #efefef;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.personHeader {
     display: flex;
-    align-items: baseline;
-    gap: 0.4rem;
-    white-space: nowrap;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.5rem 1.6rem;
+    background: linear-gradient(110deg, #DF1F26, #8B0000);
+    color: white;
 }
 
-.pubYear {
-    margin-top: 0.6rem;
-    font-size: 2.2rem;
+.personAvatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    border: 2px solid rgba(255,255,255,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+}
+
+.personLabel {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 0.25rem;
+}
+
+.personName {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+.personTitle {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    line-height: 1.4;
+}
+
+.personMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.personRow {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1.6rem;
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    border-bottom: 1px solid #f5f5f5;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.personRow:last-child {
+    border-bottom: none;
+}
+
+.personRow:hover {
+    background: #fef9f9;
+}
+
+.personRow svg {
+    flex-shrink: 0;
+    color: var(--tubitak-red);
+}
+
+.personEmail {
+    color: var(--tubitak-red);
     font-weight: 500;
+}
+
+/* ─── MAP / VISUAL COLUMN ─── */
+
+.mapCard {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+    border: 1px solid #efefef;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mapFrame {
+    overflow: hidden;
+    border-radius: 0;
+    line-height: 0;
+    flex: 1;
+    min-height: 260px;
+}
+
+.mapFrame iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    border: 0;
+    display: block;
+}
+
+.orgDetails {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.orgName {
+    font-size: 1.1rem;
+    font-weight: 700;
     color: var(--text-primary);
 }
 
-.pubContent {
-    position: relative;
-    justify-content: center;
-    align-items: center;
+.orgMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-/* Sol accent çizgi */
-.pubContent::before {
-    content: "";
-    position: absolute;
-    left: -2rem;
-    top: 0.5rem;
-    width: 3px;
-    height: 100%;
-    background: var(--tubitak-red);
+.orgRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    line-height: 1.5;
 }
 
-.pubTitle {
-    font-size: 1.6rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
-}
-
-.pubCard:hover .pubTitle {
+.orgRow svg {
+    flex-shrink: 0;
+    margin-top: 2px;
     color: var(--tubitak-red);
 }
 
-.pubDescription {
+/* ─── DIVIDER ─── */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+    margin: 0 2rem;
+}
+
+/* ─── BOTTOM STRIP ─── */
+.bottomStrip {
+    background: white;
+    border-top: 1px solid #efefef;
+    padding: 2.5rem 2rem;
+}
+
+.bottomInner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.bottomText {
+    font-size: 0.9rem;
     color: var(--text-grey);
     line-height: 1.6;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
 }
 
-.pubLink {
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--tubitak-red);
-    position: relative;
-    display: inline-block;
-    transition: opacity 0.2s ease;
-}
-
-.pubLink::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0%;
-    height: 2px;
+.emailLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     background: var(--tubitak-red);
-    transition: width 0.3s ease;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
 }
 
-.pubLink:hover::after {
-    width: 100%;
+.emailLink:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
 }
 
-.pubLink:hover {
-    opacity: 0.8;
+@media (max-width: 600px) {
+    .bottomInner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .emailLink {
+        align-self: stretch;
+        justify-content: center;
+    }
 }
