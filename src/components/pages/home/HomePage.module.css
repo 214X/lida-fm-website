@@ -275,3 +275,195 @@
     font-size: 1rem;
   }
 }
+
+/* =========================
+   LABORATORIES SECTION
+========================= */
+
+.labsSection {
+  padding: 6rem 2rem;
+  background: #f5f6f8;
+  border-top: 1px solid #ebebeb;
+}
+
+.labsContainer {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.labsHeader {
+  margin-bottom: 3rem;
+}
+
+.labsEyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #DF1F26;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.labsEyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: #DF1F26;
+  border-radius: 2px;
+}
+
+.labsTitle {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 0.8rem 0;
+}
+
+.labsSubtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0;
+}
+
+.labsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Base card ── */
+.labCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* ── Active (clickable) card ── */
+.labCardActive {
+  cursor: pointer;
+}
+
+.labCardActive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #DF1F26;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.labCardActive:hover::before {
+  transform: scaleX(1);
+}
+
+.labCardActive:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
+}
+
+/* ── Inactive (coming soon) card ── */
+.labCardInactive {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ── Icon wrapper ── */
+.labCardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  background: #fff0f0;
+  color: #DF1F26;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Body ── */
+.labCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.labCardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.labCardDesc {
+  font-size: 0.93rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Footer (CTA / badge) ── */
+.labCardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.labCardCta {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #DF1F26;
+  letter-spacing: 0.02em;
+}
+
+.labCardActive .labCardFooter {
+  color: #DF1F26;
+}
+
+.labCardComingSoon {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: #f1f5f9;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .labsSection {
+    padding: 4rem 1.25rem;
+  }
+
+  .labsGrid {
+    grid-template-columns: 1fr;
+  }
+}

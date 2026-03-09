@@ -164,7 +164,7 @@ export default function HumidityLabPage({ locale }: Props) {
             </section>
 
             {/* ─── SECTORS ─── */}
-            <section className={styles.sectionRed}>
+            <section className={styles.sectionWhite}>
                 <div className={styles.container}>
                     <p className={styles.sectionLabelLight}>{locale === "tr" ? "Uygulama Alanları" : "Application Areas"}</p>
                     <h2 className={styles.sectionTitleLight}>
