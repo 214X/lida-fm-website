@@ -46,6 +46,16 @@ export const HumidityLabContent: Record<
 
         sectorsTitle: string;
         sectors: string[];
+
+        equipmentTableTitle: string;
+        equipmentTable: {
+            no: string;
+            equipment: string;
+            brand: string;
+            model: string;
+            range: string;
+            purpose: string;
+        }[];
     }
 > = {
     tr: {
@@ -215,6 +225,66 @@ export const HumidityLabContent: Record<
             "Tekstil",
             "Otomotiv",
         ],
+
+        equipmentTableTitle: "Teknik Donanımlar ve Ekipmanlar",
+        equipmentTable: [
+            {
+                no: "1",
+                equipment: "Çiy-noktası Jeneratörü (İki Sıcaklık)",
+                brand: "Thunder Scientific",
+                model: "Model 2500",
+                range: "%10–%95 rh / −10–80 °C",
+                purpose: "Birincil nem referansı; nem kalibrasyon ortamı",
+            },
+            {
+                no: "2",
+                equipment: "Çiy-noktası Higrometre (Referans)",
+                brand: "MBW / Michell",
+                model: "DP30 / Optidew Vision",
+                range: "−40 °C – 80 °C çiy noktası",
+                purpose: "Birincil izlenebilir referans ölçer",
+            },
+            {
+                no: "3",
+                equipment: "Kapasitif Nem Sensörü (Referans Set)",
+                brand: "Vaisala",
+                model: "HMT337 / HMP155",
+                range: "%0–100 rh, −40–80 °C",
+                purpose: "Transfer standardı; kalibrasyon karşılaştırma ölçümleri",
+            },
+            {
+                no: "4",
+                equipment: "Sismik İzolasyonlu Nem Odası",
+                brand: "ERTCO / In-house",
+                model: "Özel Üretim",
+                range: "%5–%98 rh, 0–70 °C",
+                purpose: "Sabit koşullu nem kalibrasyon ortamı",
+            },
+            {
+                no: "5",
+                equipment: "Platin Direnç Termometre (SPRT)",
+                brand: "Isothermal Technology / Hart",
+                model: "Hyper Cal / 5681",
+                range: "−80 °C – 660 °C",
+                purpose: "ITS-90'a izlenebilir hava sıcaklığı referansı",
+            },
+            {
+                no: "6",
+                equipment: "Veri Toplama Sistemi (DAQ)",
+                brand: "Agilent / Keysight",
+                model: "34970A / 34980A",
+                range: "Çok kanallı analog giriş",
+                purpose: "Sıcaklık ve nem ölçüm kayıtlarının otomatik alımı",
+            },
+            {
+                no: "7",
+                equipment: "Sabit Nokta Hücresi (Su Üçlü Noktası)",
+                brand: "TuBiTak UME",
+                model: "WTP Hücresi",
+                range: "0,01 °C (273,16 K)",
+                purpose: "ITS-90 sıcaklık kalibrasyonu birincil referans noktası",
+            },
+        ],
     },
 
     en: {
@@ -383,6 +453,66 @@ export const HumidityLabContent: Record<
             "Paper & Pulp",
             "Textiles",
             "Automotive",
+        ],
+
+        equipmentTableTitle: "Technical Equipment",
+        equipmentTable: [
+            {
+                no: "1",
+                equipment: "Dew-Point Generator (Two-Temperature)",
+                brand: "Thunder Scientific",
+                model: "Model 2500",
+                range: "10–95 %rh / −10–80 °C",
+                purpose: "Primary humidity reference; calibration environment",
+            },
+            {
+                no: "2",
+                equipment: "Dew-Point Hygrometer (Reference)",
+                brand: "MBW / Michell",
+                model: "DP30 / Optidew Vision",
+                range: "−40 °C – 80 °C dew point",
+                purpose: "Primary traceable reference meter",
+            },
+            {
+                no: "3",
+                equipment: "Capacitive Humidity Sensor (Reference Set)",
+                brand: "Vaisala",
+                model: "HMT337 / HMP155",
+                range: "0–100 %rh, −40–80 °C",
+                purpose: "Transfer standard; calibration comparison measurements",
+            },
+            {
+                no: "4",
+                equipment: "Humidity Chamber (Seismically Isolated)",
+                brand: "ERTCO / In-house",
+                model: "Custom",
+                range: "5–98 %rh, 0–70 °C",
+                purpose: "Stable humidity calibration environment",
+            },
+            {
+                no: "5",
+                equipment: "Standard Platinum Resistance Thermometer (SPRT)",
+                brand: "Isothermal Technology / Hart",
+                model: "Hyper Cal / 5681",
+                range: "−80 °C – 660 °C",
+                purpose: "ITS-90 traceable air temperature reference",
+            },
+            {
+                no: "6",
+                equipment: "Data Acquisition System (DAQ)",
+                brand: "Agilent / Keysight",
+                model: "34970A / 34980A",
+                range: "Multi-channel analog input",
+                purpose: "Automatic temperature and humidity data recording",
+            },
+            {
+                no: "7",
+                equipment: "Fixed-Point Cell (Water Triple Point)",
+                brand: "TuBiTak UME",
+                model: "WTP Cell",
+                range: "0.01 °C (273.16 K)",
+                purpose: "ITS-90 primary temperature calibration reference",
+            },
         ],
     },
 };

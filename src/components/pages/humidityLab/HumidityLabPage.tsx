@@ -92,8 +92,44 @@ export default function HumidityLabPage({ locale }: Props) {
                 </div>
             </section>
 
-            {/* ─── UNCERTAINTY ─── */}
+            {/* ─── EQUIPMENT TABLE ─── */}
             <section className={styles.sectionWhite}>
+                <div className={styles.container}>
+                    <p className={styles.sectionLabel}>{locale === "tr" ? "Altyapı" : "Infrastructure"}</p>
+                    <h2 className={styles.sectionTitle}>
+                        <span className={styles.titleUnderline}>{c.equipmentTableTitle}</span>
+                    </h2>
+                    <div style={{ overflowX: "auto", marginTop: "2rem" }}>
+                        <table className={styles.uncertaintyTable}>
+                            <thead>
+                                <tr>
+                                    <th>{locale === "tr" ? "No" : "No"}</th>
+                                    <th>{locale === "tr" ? "Ekipman / Sistem" : "Equipment / System"}</th>
+                                    <th>{locale === "tr" ? "Marka" : "Brand"}</th>
+                                    <th>{locale === "tr" ? "Model" : "Model"}</th>
+                                    <th>{locale === "tr" ? "Aralık / Kapasite" : "Range / Capacity"}</th>
+                                    <th>{locale === "tr" ? "Amaç / Kullanım" : "Purpose / Use"}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {c.equipmentTable.map((row, i) => (
+                                    <tr key={i}>
+                                        <td><strong>{row.no}</strong></td>
+                                        <td>{row.equipment}</td>
+                                        <td>{row.brand}</td>
+                                        <td>{row.model}</td>
+                                        <td>{row.range}</td>
+                                        <td>{row.purpose}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            {/* ─── UNCERTAINTY ─── */}
+            <section className={styles.sectionGrey}>
                 <div className={styles.container}>
                     <p className={styles.sectionLabel}>{locale === "tr" ? "Doğruluk" : "Accuracy"}</p>
                     <h2 className={styles.sectionTitle}>
@@ -127,7 +163,7 @@ export default function HumidityLabPage({ locale }: Props) {
             </section>
 
             {/* ─── CALIBRATIONS ─── */}
-            <section className={styles.sectionGrey}>
+            <section className={styles.sectionWhite}>
                 <div className={styles.container}>
                     <p className={styles.sectionLabelLight}>{locale === "tr" ? "Kalibrasyon" : "Calibration"}</p>
                     <h2 className={styles.sectionTitleLight}>
@@ -145,7 +181,7 @@ export default function HumidityLabPage({ locale }: Props) {
             </section>
 
             {/* ─── SERVICES ─── */}
-            <section className={styles.sectionWhite}>
+            <section className={styles.sectionGrey}>
                 <div className={styles.container}>
                     <p className={styles.sectionLabel}>{locale === "tr" ? "Hizmetler" : "Services"}</p>
                     <h2 className={styles.sectionTitle}>
@@ -164,7 +200,7 @@ export default function HumidityLabPage({ locale }: Props) {
             </section>
 
             {/* ─── SECTORS ─── */}
-            <section className={styles.sectionGrey}>
+            <section className={styles.sectionWhite}>
                 <div className={styles.container}>
                     <p className={styles.sectionLabelLight}>{locale === "tr" ? "Uygulama Alanları" : "Application Areas"}</p>
                     <h2 className={styles.sectionTitleLight}>
