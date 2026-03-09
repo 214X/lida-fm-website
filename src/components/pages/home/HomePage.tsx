@@ -3,7 +3,7 @@ import { homeContent } from "./homeContent";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { FiUsers, FiMail, FiBookOpen } from "react-icons/fi";
-import { Droplets, Thermometer, Wind, ArrowRight, Lock, RadioTower } from "lucide-react";
+import { Droplets, Thermometer, Wind, ArrowRight, Lock, RadioTower, Layers } from "lucide-react";
 import styles from "./HomePage.module.css";
 import { routes } from "@/lib/routes";
 
@@ -53,15 +53,15 @@ export default function HomePage({ locale }: HomePageProps) {
             active: true,
         },
         {
-            icon: <Wind size={36} strokeWidth={1.5} />,
-            slug: "pressure",
-            title: locale === "tr" ? "Basınç Laboratuvarı" : "Pressure Laboratory",
+            icon: <Layers size={36} strokeWidth={1.5} />,
+            slug: "thermophysical",
+            title: locale === "tr" ? "Termofiziksel Özellikler Laboratuvarı" : "Thermophysical Properties Laboratory",
             description:
                 locale === "tr"
-                    ? "Gaz ve sıvı basıncı ölçümlerinde uluslararası geçerliliğe sahip kalibrasyon altyapısı."
-                    : "Internationally recognized calibration infrastructure for gas and liquid pressure measurements.",
-            href: "#",
-            active: false,
+                    ? "Isıl iletkenlik, özısı, ısıl yayılım ve emisivite ölçümlerinde BIPM izlenebilirliğiyle yüksek doğruluklu kalibrasyon hizmetleri."
+                    : "High-accuracy calibration services with BIPM traceability in thermal conductivity, specific heat, thermal diffusivity, and emissivity measurements.",
+            href: routes.thermophysicalLab[locale],
+            active: true,
         },
     ];
 

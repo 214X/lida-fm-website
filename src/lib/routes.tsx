@@ -32,6 +32,10 @@ export const routes: Record<
     radiationTemperatureLab: {
         tr: "/laboratuvarlar/radyasyon-sicakligi",
         en: "/en/laboratories/radiation-temperature",
+    },
+    thermophysicalLab: {
+        tr: "/laboratuvarlar/termofiziksel",
+        en: "/en/laboratories/thermophysical",
     }
     // LABS ENDS
 };

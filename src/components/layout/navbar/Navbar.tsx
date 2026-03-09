@@ -152,6 +152,16 @@ export default function Navbar() {
                     ? "Radyasyon Sıcaklığı Laboratuvarı"
                     : "Radiation Temperature Laboratory"}
                 </Link>
+
+                <Link
+                  href={routes.thermophysicalLab[locale]}
+                  className={styles.subMenuLink}
+                  onClick={closeMenu}
+                >
+                  {locale === "tr"
+                    ? "Termofiziksel Özellikler Laboratuvarı"
+                    : "Thermophysical Properties Laboratory"}
+                </Link>
               </div>
             </div>
             {/* ----- LABORATORIES MENU ENDS ----- */}

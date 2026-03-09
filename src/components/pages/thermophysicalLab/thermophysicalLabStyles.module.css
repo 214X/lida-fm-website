@@ -1,0 +1,581 @@
+/* ============================================================
+    HERO
+============================================================ */
+
+.hero {
+    position: relative;
+    min-height: 60vh;
+
+    background-image: url("/images/humidity-page/humidity-her.png");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+
+    color: white;
+    background-color: #343a40;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    /* Gradient from strong Tubitak Red on the left to bright solid white on the right */
+    /* background: linear-gradient(110deg, rgba(223, 31, 38, 0.95) 0%, rgba(223, 31, 38, 0.6) 40%, rgba(255, 255, 255, 0.85) 100%); */
+    background-color: var(--tubitak-red);
+
+    background: linear-gradient(110deg, rgba(223, 31, 38, 0.95) 0%, rgba(223, 31, 38, 0.6) 40%, rgba(169, 36, 36, 0.85) 100%);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+}
+
+.heroContent h1 {
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.heroBadge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    margin-bottom: 1.2rem;
+    backdrop-filter: blur(4px);
+}
+
+.heroContent p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    max-width: 720px;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* ============================================================
+    SECTION BASE
+============================================================ */
+
+.sectionWhite {
+    padding: 5rem 2rem;
+    background: var(--background);
+}
+
+.sectionGrey {
+    padding: 5rem 2rem;
+    background: #f7f7f7;
+}
+
+.sectionRed {
+    padding: 5rem 2rem;
+    background: #fcfcfc;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    color: var(--foreground);
+}
+
+.sectionDark {
+    padding: 5rem 2rem;
+    background: #f4f5f7;
+    color: var(--foreground);
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+    SECTION TITLE
+============================================================ */
+
+.sectionLabel {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tubitak-red);
+    margin-bottom: 0.5rem;
+}
+
+.sectionLabelLight {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tubitak-red);
+    margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+}
+
+.sectionTitleLight {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+}
+
+.sectionText {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-grey);
+    max-width: 820px;
+}
+
+.sectionTextLight {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text-grey);
+    max-width: 820px;
+}
+
+.titleUnderline {
+    display: inline-block;
+    border-bottom: 3px solid var(--tubitak-red);
+    padding-bottom: 0.15rem;
+}
+
+.titleUnderlineLight {
+    display: inline-block;
+    border-bottom: 3px solid var(--tubitak-red);
+    padding-bottom: 0.15rem;
+}
+
+/* ============================================================
+    PURPOSE SECTION — Two Column w/ Text
+============================================================ */
+
+.purposeColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.purposeParagraph {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-grey);
+}
+
+
+/* ============================================================
+    STATS STRIP
+============================================================ */
+
+.statsStrip {
+    background: #ffffff;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    padding: 3rem 2rem;
+}
+
+.statsGrid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--foreground);
+}
+
+.statValue {
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.statLabel {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-grey);
+    line-height: 1.5;
+    max-width: 240px;
+    text-align: center;
+}
+
+/* ============================================================
+    AREAS GRID — Icon Cards
+============================================================ */
+
+.areasGrid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.areaCard {
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.areaCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--tubitak-red);
+}
+
+.areaCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.09);
+}
+
+.areaIcon {
+    font-size: 2rem;
+    color: var(--tubitak-red);
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.areaCard h3 {
+    color: var(--foreground);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.areaCard p {
+    font-size: 0.93rem;
+    color: var(--text-grey);
+    line-height: 1.65;
+}
+
+/* ============================================================
+    INSTRUMENTS SECTION
+============================================================ */
+
+.instrumentsIntro {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-grey);
+    max-width: 820px;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    border-left: 4px solid var(--tubitak-red);
+    background: #fff9f9;
+    border-radius: 0 8px 8px 0;
+}
+
+.instrumentsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.instrumentItem {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.6rem 2rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.instrumentItem:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+}
+
+.instrumentNum {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 36px;
+    height: 36px;
+
+    background: var(--tubitak-red);
+    color: white;
+    border-radius: 50%;
+
+    font-size: 0.82rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.instrumentBody h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--foreground);
+    margin-bottom: 0.4rem;
+}
+
+.instrumentBody p {
+    font-size: 0.93rem;
+    color: var(--text-grey);
+    line-height: 1.65;
+}
+
+/* ============================================================
+    UNCERTAINTY TABLE
+============================================================ */
+
+.uncertaintyText {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-grey);
+    max-width: 820px;
+    margin: 1rem 0 2rem;
+}
+
+.uncertaintyTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.uncertaintyTable th {
+    background: #f4f5f7;
+    color: var(--foreground);
+    border-bottom: 2px solid var(--tubitak-red);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.9rem 1.2rem;
+    letter-spacing: 0.03em;
+}
+
+.uncertaintyTable td {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+    color: var(--foreground);
+    border-bottom: 1px solid #efefef;
+    background: white;
+}
+
+.uncertaintyTable tr:last-child td {
+    border-bottom: none;
+}
+
+.uncertaintyTable tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+.uncertaintyNote {
+    font-size: 0.82rem;
+    color: var(--text-grey);
+    margin-top: 0.8rem;
+    font-style: italic;
+}
+
+/* ============================================================
+    CALIBRATIONS LIST
+============================================================ */
+
+.calibrationsGrid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.calibrationCard {
+    background: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.calibrationCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.calibrationCard h3 {
+    color: var(--foreground);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+
+.calibrationCard p {
+    font-size: 0.93rem;
+    color: var(--text-grey);
+    line-height: 1.65;
+}
+
+/* ============================================================
+    SERVICES GRID
+============================================================ */
+
+.servicesGrid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.serviceCard {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.serviceCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.09);
+}
+
+.serviceIcon {
+    font-size: 2rem;
+    color: var(--tubitak-red);
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
+.serviceCard h3 {
+    color: var(--tubitak-red);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.serviceCard p {
+    font-size: 0.93rem;
+    color: var(--text-grey);
+    line-height: 1.65;
+}
+
+/* ============================================================
+    SECTORS CLOUD
+============================================================ */
+
+.sectorsCloud {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.sectorTag {
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    color: var(--foreground);
+    border-radius: 100px;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.sectorTag:hover {
+    border-color: var(--tubitak-red);
+    color: var(--tubitak-red);
+    background: #fffafa;
+}
+
+/* ============================================================
+    MOBILE RESPONSIVENESS
+============================================================ */
+
+@media (max-width: 768px) {
+    .heroContent {
+        padding: 6rem 1.5rem 3rem;
+    }
+
+    .sectionWhite,
+    .sectionGrey,
+    .sectionRed,
+    .sectionDark {
+        padding: 3.5rem 1.25rem;
+    }
+
+    .statsStrip {
+        padding: 2.5rem 1.25rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .areasGrid,
+    .calibrationsGrid,
+    .servicesGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .instrumentItem {
+        padding: 1.2rem 1.2rem;
+        gap: 1rem;
+    }
+
+    .uncertaintyTable {
+        font-size: 0.85rem;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .uncertaintyTable th,
+    .uncertaintyTable td {
+        padding: 0.75rem 1rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .statsGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
+    }
+
+    .instrumentBody h3 {
+        font-size: 0.95rem;
+    }
+
+    .sectorTag {
+        font-size: 0.82rem;
+        padding: 0.4rem 0.9rem;
+    }
+}
