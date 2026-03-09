@@ -472,3 +472,181 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================
+   LATEST PUBLICATION
+========================= */
+
+.latestPubSection {
+    padding: 6rem 2rem;
+    background: #fdfdfd;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #efefef;
+}
+
+.latestPubSection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 80% 0%, rgba(223, 31, 38, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.latestPubContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.latestPubHeader {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.latestPubEyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--tubitak-red);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+}
+
+.latestPubTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.latestPubCard {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.latestPubCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(223, 31, 38, 0.08);
+}
+
+.latestPubCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #DF1F26, #8B0000);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.latestPubMeta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.latestPubDate {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-grey);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.latestPubBadge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tubitak-red);
+    background: rgba(223, 31, 38, 0.08);
+    padding: 0.25rem 0.85rem;
+    border-radius: 100px;
+}
+
+.latestPubName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--text-primary);
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+.latestPubCard:hover .latestPubName {
+    color: var(--tubitak-red);
+}
+
+.latestPubDesc {
+    font-size: 1.05rem;
+    color: var(--text-grey);
+    line-height: 1.7;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.latestPubFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.latestPubLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    background: var(--tubitak-red);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.latestPubLink:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.latestPubViewAll {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-grey);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.latestPubViewAll:hover {
+    color: var(--text-primary);
+}

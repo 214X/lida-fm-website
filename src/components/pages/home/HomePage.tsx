@@ -3,9 +3,10 @@ import { homeContent } from "./homeContent";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { FiUsers, FiMail, FiBookOpen } from "react-icons/fi";
-import { Droplets, Thermometer, Wind, ArrowRight, Lock, RadioTower, Layers } from "lucide-react";
+import { Droplets, Thermometer, Wind, ArrowRight, ArrowUpRight, Lock, RadioTower, Layers } from "lucide-react";
 import styles from "./HomePage.module.css";
 import { routes } from "@/lib/routes";
+import { publicationsData, getMonthName } from "@/data/publications";
 
 type HomePageProps = {
     locale: Locale;
@@ -28,6 +29,7 @@ function HeroButton({ name, icon, href }: HeroButtonProps) {
 
 export default function HomePage({ locale }: HomePageProps) {
     const content = homeContent[locale];
+    const latestPub = publicationsData[0]; // Assuming index 0 is always the newest
 
     const labs = [
         {
@@ -165,6 +167,53 @@ export default function HomePage({ locale }: HomePageProps) {
                     </div>
                 </div>
             </section>
+
+            {/* ─── LATEST PUBLICATION SECTION ─── */}
+            {latestPub && (
+                <section className={styles.latestPubSection}>
+                    <div className={styles.latestPubContainer}>
+                        <div className={styles.latestPubHeader}>
+                            <p className={styles.latestPubEyebrow}>{content.latestPubEyebrow}</p>
+                            <h2 className={styles.latestPubTitle}>{content.latestPubTitle}</h2>
+                        </div>
+                        
+                        <div className={styles.latestPubCard}>
+                            <div className={styles.latestPubMeta}>
+                                <div className={styles.latestPubDate}>
+                                    {latestPub.day} {getMonthName(latestPub.month, locale)} {latestPub.year}
+                                </div>
+                                <span className={styles.latestPubBadge}>
+                                    {locale === "tr" ? "Makale" : "Article"}
+                                </span>
+                                {latestPub.journal && (
+                                    <span className={styles.latestPubBadge}>{latestPub.journal}</span>
+                                )}
+                            </div>
+                            
+                            <h3 className={styles.latestPubName}>{latestPub.title}</h3>
+                            <p className={styles.latestPubDesc}>{latestPub.description}</p>
+                            
+                            <div className={styles.latestPubFooter}>
+                                <a 
+                                    href={latestPub.href} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className={styles.latestPubLink}
+                                >
+                                    {content.readMoreBtn}
+                                    <ArrowUpRight size={16} strokeWidth={2} />
+                                </a>
+                                <Link 
+                                    href={routes.publications[locale]} 
+                                    className={styles.latestPubViewAll} 
+                                >
+                                    {content.viewAllBtn} <ArrowRight size={14} />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )}
         </>
     );
 }
