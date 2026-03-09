@@ -128,3 +128,5 @@ export default function ContactPage({ locale }: ContactPageProps) {
         </>
     );
 }
+
+// refresh addition for vercel
