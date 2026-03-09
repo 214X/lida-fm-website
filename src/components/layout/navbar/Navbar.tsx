@@ -166,9 +166,9 @@ export default function Navbar() {
             </div>
             {/* ----- LABORATORIES MENU ENDS ----- */}
 
-            <Link href={routes.projects[locale]} className={styles.menuLink} onClick={closeMenu}>
+            {/* <Link href={routes.projects[locale]} className={styles.menuLink} onClick={closeMenu}>
               {locale === "tr" ? "Projeler" : "Projects"}
-            </Link>
+            </Link> */}
 
             <Link href={routes.contact[locale]} className={styles.menuLink} onClick={closeMenu}>
               {locale === "tr" ? "İletişim" : "Contact"}
