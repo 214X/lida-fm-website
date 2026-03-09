@@ -20,7 +20,11 @@
 .overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(223, 31, 38, 0.95);
+    /* Gradient from strong Tubitak Red on the left to bright solid white on the right */
+    /* background: linear-gradient(110deg, rgba(223, 31, 38, 0.95) 0%, rgba(223, 31, 38, 0.6) 40%, rgba(255, 255, 255, 0.85) 100%); */
+    background-color: var(--tubitak-red);
+
+    background: linear-gradient(110deg, rgba(223, 31, 38, 0.95) 0%, rgba(223, 31, 38, 0.6) 40%, rgba(169, 36, 36, 0.85) 100%);
 }
 
 .heroContent {
@@ -190,7 +194,7 @@
     max-width: 1180px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
     text-align: center;
 }
@@ -199,21 +203,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.5rem;
     color: var(--foreground);
 }
 
 .statValue {
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
     font-weight: 800;
-    line-height: 1;
+    line-height: 1.1;
+    white-space: nowrap;
 }
 
 .statLabel {
-    font-size: 0.88rem;
+    font-size: 0.95rem;
+    font-weight: 500;
     color: var(--text-grey);
-    line-height: 1.4;
-    max-width: 160px;
+    line-height: 1.5;
+    max-width: 240px;
     text-align: center;
 }
 

@@ -66,10 +66,10 @@ export const HumidityLabContent: Record<
 
         statsTitle: "Ölçüm Kapasiteleri",
         stats: [
-            { value: "0.07 °C", label: "Belirsizlik (-10 °C ile 70 °C arası)" },
-            { value: "0.2 °C", label: "Belirsizlik (70 °C ile 90 °C arası)" },
-            { value: "k=2", label: "Genişletme faktörü" },
-            { value: "ITS-90", label: "Uluslararası Sıcaklık Ölçeği" },
+            { value: "11–95 %rh", label: "Bağıl Nem Ölçüm Aralığı" },
+            { value: "−80 °C – 60 °C", label: "Çiy / Kırağı Noktası Ölçüm Aralığı" },
+            { value: "0.07 °C", label: "Sıcaklık Ölçüm Belirsizliği" },
+            { value: "ITS-90", label: "Uluslararası Sıcaklık Ölçeği İzlenebilirliği" },
         ],
 
         areasTitle: "Çalışma Alanları",
@@ -235,10 +235,10 @@ export const HumidityLabContent: Record<
 
         statsTitle: "Measurement Capabilities",
         stats: [
-            { value: "0.07 °C", label: "Uncertainty (-10 °C to 70 °C range)" },
-            { value: "0.2 °C", label: "Uncertainty (70 °C to 90 °C range)" },
-            { value: "k=2", label: "Coverage factor" },
-            { value: "ITS-90", label: "International Temperature Scale" },
+            { value: "11–95 %rh", label: "Relative Humidity Measurement Range" },
+            { value: "−80 °C – 60 °C", label: "Dew / Frost Point Measurement Range" },
+            { value: "0.07 °C", label: "Temperature Measurement Uncertainty" },
+            { value: "ITS-90", label: "International Temperature Scale Traceability" },
         ],
 
         areasTitle: "Research Areas",

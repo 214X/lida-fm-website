@@ -127,7 +127,7 @@ export default function HumidityLabPage({ locale }: Props) {
             </section>
 
             {/* ─── CALIBRATIONS ─── */}
-            <section className={styles.sectionDark}>
+            <section className={styles.sectionWhite}>
                 <div className={styles.container}>
                     <p className={styles.sectionLabelLight}>{locale === "tr" ? "Kalibrasyon" : "Calibration"}</p>
                     <h2 className={styles.sectionTitleLight}>
@@ -145,7 +145,7 @@ export default function HumidityLabPage({ locale }: Props) {
             </section>
 
             {/* ─── SERVICES ─── */}
-            <section className={styles.sectionWhite}>
+            <section className={styles.sectionGrey}>
                 <div className={styles.container}>
                     <p className={styles.sectionLabel}>{locale === "tr" ? "Hizmetler" : "Services"}</p>
                     <h2 className={styles.sectionTitle}>
