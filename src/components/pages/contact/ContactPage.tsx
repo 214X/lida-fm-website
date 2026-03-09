@@ -94,7 +94,7 @@ export default function ContactPage({ locale }: ContactPageProps) {
                                 {/* Google Maps iframe */}
                                 <div className={styles.mapFrame}>
                                     <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.3!2d29.4435!3d40.7972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac2a02c77d3f9%3A0xe02451a2d4a79c6!2sTÜBİTAK%20UME!5e0!3m2!1str!2str!4v1699999999999!5m2!1str!2str"
+                                        src="https://maps.google.com/maps?q=TÜBİTAK+UME+Gebze+Kocaeli+Turkey&z=16&output=embed"
                                         allowFullScreen
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
