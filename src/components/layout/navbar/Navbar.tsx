@@ -14,12 +14,16 @@ export default function Navbar() {
   const isEnglish = pathname.startsWith("/en");
   const locale = isEnglish ? "en" : "tr";
   const oppositeLocale = locale === "tr" ? "en" : "tr";
-  const closeMenu = () => setIsOpen(false);
 
   const [isOpen, setIsOpen] = useState(false);
   const [labsOpen, setLabsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(true);
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setLabsOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -29,6 +33,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsOpen(false);
+    setLabsOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -40,6 +45,13 @@ export default function Navbar() {
       return routes[key].tr === pathname || routes[key].en === pathname;
     }) ?? "home";
 
+  const isActive = (route: string) => pathname === route;
+
+  const isLabActive =
+    isActive(routes.humidityLab[locale]) ||
+    isActive(routes.radiationTemperatureLab[locale]) ||
+    isActive(routes.thermophysicalLab[locale]);
+
   return (
     <nav
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
@@ -47,7 +59,7 @@ export default function Navbar() {
       onMouseLeave={() => setHovered(false)}
     >
       <div className={styles.navbarInner}>
-        <Link href="/" className={styles.logoWrapper}>
+        <Link href={routes.home[locale]} className={styles.logoWrapper}>
           <Image
             src={
               scrolled || hovered
@@ -60,6 +72,87 @@ export default function Navbar() {
             priority
           />
         </Link>
+
+        <div className={styles.navLinks}>
+          <Link
+            href={routes.home[locale]}
+            className={`${styles.navLink} ${
+              isActive(routes.home[locale]) ? styles.active : ""
+            }`}
+          >
+            {locale === "tr" ? "Ana Sayfa" : "Home"}
+          </Link>
+
+          <Link
+            href={routes.aboutUs[locale]}
+            className={`${styles.navLink} ${
+              isActive(routes.aboutUs[locale]) ? styles.active : ""
+            }`}
+          >
+            {locale === "tr" ? "Hakkımızda" : "About Us"}
+          </Link>
+
+          <Link
+            href={routes.publications[locale]}
+            className={`${styles.navLink} ${
+              isActive(routes.publications[locale]) ? styles.active : ""
+            }`}
+          >
+            {locale === "tr" ? "Yayınlar" : "Publications"}
+          </Link>
+
+          {/* LABS DROPDOWN */}
+          <div
+            className={styles.navDropdown}
+            onMouseEnter={() => setLabsOpen(true)}
+            onMouseLeave={() => setLabsOpen(false)}
+          >
+            <button
+              className={`${styles.navLink} ${
+                isLabActive ? `${styles.active} ${styles.labActive}` : ""
+              }`}
+            >
+              {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
+              <ChevronDown size={15} />
+            </button>
+
+            <div
+              className={`${styles.dropdownMenu} ${
+                labsOpen ? styles.dropdownOpen : ""
+              }`}
+            >
+              <Link
+                href={routes.humidityLab[locale]}
+                onClick={() => setLabsOpen(false)}
+              >
+                Nem Laboratuvarı
+              </Link>
+
+              <Link
+                href={routes.radiationTemperatureLab[locale]}
+                onClick={() => setLabsOpen(false)}
+              >
+                Radyasyon Sıcaklığı Laboratuvarı
+              </Link>
+
+              <Link
+                href={routes.thermophysicalLab[locale]}
+                onClick={() => setLabsOpen(false)}
+              >
+                Termofiziksel Özellikler Laboratuvarı
+              </Link>
+            </div>
+          </div>
+
+          <Link
+            href={routes.contact[locale]}
+            className={`${styles.navLink} ${
+              isActive(routes.contact[locale]) ? styles.active : ""
+            }`}
+          >
+            {locale === "tr" ? "İletişim" : "Contact"}
+          </Link>
+        </div>
 
         <div className={styles.rightSection}>
           <button
@@ -78,47 +171,45 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* MOBILE MENU */}
         <div className={`${styles.menuOverlay} ${isOpen ? styles.open : ""}`}>
           <button
             className={styles.closeButton}
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
           >
             ✕
           </button>
 
           <nav className={styles.menuContent}>
             <Link
-              href="/"
-              className={styles.menuLogoWrapper}
+              href={routes.home[locale]}
+              className={styles.menuLink}
               onClick={closeMenu}
             >
-              <Image
-                src="/images/ume-logo/UME-Yatay.png"
-                alt="MenuLogo"
-                width={250}
-                height={1}
-                priority
-              />
+              Ana Sayfa
             </Link>
 
-            <Link href={routes.home[locale]} className={styles.menuLink} onClick={closeMenu}>
-              {locale === "tr" ? "Ana Sayfa" : "Home"}
+            <Link
+              href={routes.aboutUs[locale]}
+              className={styles.menuLink}
+              onClick={closeMenu}
+            >
+              Hakkımızda
             </Link>
 
-            <Link href={routes.home[locale]} className={styles.menuLink} onClick={closeMenu}>
-              {locale === "tr" ? "Hakkımızda" : "About us"}
+            <Link
+              href={routes.publications[locale]}
+              className={styles.menuLink}
+              onClick={closeMenu}
+            >
+              Yayınlar
             </Link>
 
-            <Link href={routes.publications[locale]} className={styles.menuLink} onClick={closeMenu}>
-              {locale === "tr" ? "Yayınlar" : "Publications"}
-            </Link>
-
-            {/* ----- LABORATORIES MENU STARTS ----- */}
             <button
               className={styles.menuLink}
               onClick={() => setLabsOpen(!labsOpen)}
             >
-              {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
+              Laboratuvarlar
               <ChevronDown
                 size={16}
                 className={`${styles.chevron} ${
@@ -135,43 +226,33 @@ export default function Navbar() {
               <div className={styles.subMenuInner}>
                 <Link
                   href={routes.humidityLab[locale]}
-                  className={styles.subMenuLink}
                   onClick={closeMenu}
                 >
-                  {locale === "tr"
-                    ? "Nem Laboratuvarı"
-                    : "Humidity Laboratory"}
+                  Nem Laboratuvarı
                 </Link>
 
                 <Link
                   href={routes.radiationTemperatureLab[locale]}
-                  className={styles.subMenuLink}
                   onClick={closeMenu}
                 >
-                  {locale === "tr"
-                    ? "Radyasyon Sıcaklığı Laboratuvarı"
-                    : "Radiation Temperature Laboratory"}
+                  Radyasyon Sıcaklığı Laboratuvarı
                 </Link>
 
                 <Link
                   href={routes.thermophysicalLab[locale]}
-                  className={styles.subMenuLink}
                   onClick={closeMenu}
                 >
-                  {locale === "tr"
-                    ? "Termofiziksel Özellikler Laboratuvarı"
-                    : "Thermophysical Properties Laboratory"}
+                  Termofiziksel Özellikler Laboratuvarı
                 </Link>
               </div>
             </div>
-            {/* ----- LABORATORIES MENU ENDS ----- */}
 
-            {/* <Link href={routes.projects[locale]} className={styles.menuLink} onClick={closeMenu}>
-              {locale === "tr" ? "Projeler" : "Projects"}
-            </Link> */}
-
-            <Link href={routes.contact[locale]} className={styles.menuLink} onClick={closeMenu}>
-              {locale === "tr" ? "İletişim" : "Contact"}
+            <Link
+              href={routes.contact[locale]}
+              className={styles.menuLink}
+              onClick={closeMenu}
+            >
+              İletişim
             </Link>
           </nav>
         </div>
