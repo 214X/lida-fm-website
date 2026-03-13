@@ -52,6 +52,12 @@ export default function Navbar() {
     isActive(routes.radiationTemperatureLab[locale]) ||
     isActive(routes.thermophysicalLab[locale]);
 
+  const labNames = {
+    humidity: locale === "tr" ? "Nem Laboratuvarı" : "Humidity Laboratory",
+    radiation: locale === "tr" ? "Radyasyon Sıcaklığı Laboratuvarı" : "Radiation Temperature Laboratory",
+    thermophysical: locale === "tr" ? "Termofiziksel Özellikler Laboratuvarı" : "Thermophysical Properties Laboratory"
+  };
+
   return (
     <nav
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
@@ -124,22 +130,25 @@ export default function Navbar() {
               <Link
                 href={routes.humidityLab[locale]}
                 onClick={() => setLabsOpen(false)}
+                className={isActive(routes.humidityLab[locale]) ? styles.activeLink : ""}
               >
-                Nem Laboratuvarı
+                {labNames.humidity}
               </Link>
 
               <Link
                 href={routes.radiationTemperatureLab[locale]}
                 onClick={() => setLabsOpen(false)}
+                className={isActive(routes.radiationTemperatureLab[locale]) ? styles.activeLink : ""}
               >
-                Radyasyon Sıcaklığı Laboratuvarı
+                {labNames.radiation}
               </Link>
 
               <Link
                 href={routes.thermophysicalLab[locale]}
                 onClick={() => setLabsOpen(false)}
+                className={isActive(routes.thermophysicalLab[locale]) ? styles.activeLink : ""}
               >
-                Termofiziksel Özellikler Laboratuvarı
+                {labNames.thermophysical}
               </Link>
             </div>
           </div>
@@ -186,7 +195,7 @@ export default function Navbar() {
               className={styles.menuLink}
               onClick={closeMenu}
             >
-              Ana Sayfa
+              {locale === "tr" ? "Ana Sayfa" : "Home"}
             </Link>
 
             <Link
@@ -194,7 +203,7 @@ export default function Navbar() {
               className={styles.menuLink}
               onClick={closeMenu}
             >
-              Hakkımızda
+              {locale === "tr" ? "Hakkımızda" : "About Us"}
             </Link>
 
             <Link
@@ -202,14 +211,14 @@ export default function Navbar() {
               className={styles.menuLink}
               onClick={closeMenu}
             >
-              Yayınlar
+              {locale === "tr" ? "Yayınlar" : "Publications"}
             </Link>
 
             <button
               className={styles.menuLink}
               onClick={() => setLabsOpen(!labsOpen)}
             >
-              Laboratuvarlar
+              {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
               <ChevronDown
                 size={16}
                 className={`${styles.chevron} ${
@@ -227,22 +236,25 @@ export default function Navbar() {
                 <Link
                   href={routes.humidityLab[locale]}
                   onClick={closeMenu}
+                  className={isActive(routes.humidityLab[locale]) ? styles.activeLink : ""}
                 >
-                  Nem Laboratuvarı
+                  {labNames.humidity}
                 </Link>
 
                 <Link
                   href={routes.radiationTemperatureLab[locale]}
                   onClick={closeMenu}
+                  className={isActive(routes.radiationTemperatureLab[locale]) ? styles.activeLink : ""}
                 >
-                  Radyasyon Sıcaklığı Laboratuvarı
+                  {labNames.radiation}
                 </Link>
 
                 <Link
                   href={routes.thermophysicalLab[locale]}
                   onClick={closeMenu}
+                  className={isActive(routes.thermophysicalLab[locale]) ? styles.activeLink : ""}
                 >
-                  Termofiziksel Özellikler Laboratuvarı
+                  {labNames.thermophysical}
                 </Link>
               </div>
             </div>
@@ -252,7 +264,7 @@ export default function Navbar() {
               className={styles.menuLink}
               onClick={closeMenu}
             >
-              İletişim
+              {locale === "tr" ? "İletişim" : "Contact"}
             </Link>
           </nav>
         </div>

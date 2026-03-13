@@ -7,23 +7,41 @@ type AboutPageProps = {
 };
 
 export default function AboutPage({ locale }: AboutPageProps) {
-    const content = AboutContent[locale];
+    const c = AboutContent[locale];
 
     return (
         <>
+            {/* ─── HERO ─── */}
             <section className={styles.hero}>
                 <div className={styles.overlay} />
-
                 <div className={styles.heroContent}>
-                    <h1>{content.title}</h1>
+                    <span className={styles.heroBadge}>{c.badge}</span>
+                    <h1>{c.title}</h1>
+                    <p>{c.heroText}</p>
                 </div>
             </section>
 
-            <section className={styles.content}>
-                <h2>Devam Eden İçerik</h2>
-                <p>
-                    Buradan sonra normal sayfa akışı devam eder.
-                </p>
+            {/* ─── MAIN CONTENT ─── */}
+            <section className={styles.section}>
+                <div className={styles.container}>
+                    <div className={styles.grid}>
+
+                        {/* LEFT – Main Content Sections */}
+                        <div className={styles.contentColumn}>
+                            {c.mainSections.map((section, idx) => (
+                                <div key={idx} className={styles.textSection}>
+                                    <h2 className={styles.sectionTitle}>{section.title}</h2>
+                                    {section.content.map((paragraph, pIdx) => (
+                                        <p key={pIdx} className={styles.sectionParagraph}>
+                                            {paragraph}
+                                        </p>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+                </div>
             </section>
         </>
     );

@@ -115,8 +115,10 @@
   white-space: nowrap;
 }
 
-.dropdownMenu a:hover {
+.dropdownMenu a:hover,
+.dropdownMenu a.activeLink {
   color: var(--tubitak-red);
+  font-weight: 600;
 }
 
 /* right section */
