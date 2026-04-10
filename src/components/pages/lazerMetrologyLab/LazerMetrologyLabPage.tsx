@@ -125,40 +125,6 @@ export default function LazerMetrologyLabPage({ locale }: Props) {
                 </div>
             </section>
 
-            {/* ─── UNCERTAINTY ─── */}
-            <section className={styles.sectionGrey}>
-                <div className={styles.container}>
-                    <p className={styles.sectionLabel}>{locale === "tr" ? "Doğruluk" : "Accuracy"}</p>
-                    <h2 className={styles.sectionTitle}>
-                        <span className={styles.titleUnderline}>{c.uncertaintyTitle}</span>
-                    </h2>
-                    <p className={styles.uncertaintyText}>{c.uncertaintyText}</p>
-                    <table className={styles.uncertaintyTable}>
-                        <thead>
-                            <tr>
-                                <th>{locale === "tr" ? "Ölçüm Büyüklüğü" : "Measurement Quantity"}</th>
-                                <th>{locale === "tr" ? "Genişletilmiş Belirsizlik (U)" : "Expanded Uncertainty (U)"}</th>
-                                <th>{locale === "tr" ? "Güven Düzeyi" : "Confidence Level"}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {c.uncertaintyItems.map((row, i) => (
-                                <tr key={i}>
-                                    <td><strong>{row.range}</strong></td>
-                                    <td>{row.value}</td>
-                                    <td>{row.level}</td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <p className={styles.uncertaintyNote}>
-                        {locale === "tr"
-                            ? "* Belirsizlik değerleri k=2 genişletme faktörü kullanılarak hesaplanmıştır ve yaklaşık %95 güven aralığına karşılık gelmektedir."
-                            : "* Uncertainty values are calculated using a coverage factor k=2 and correspond to an approximately 95% confidence interval."}
-                    </p>
-                </div>
-            </section>
-
             {/* ─── CALIBRATIONS ─── */}
             <section className={styles.sectionWhite}>
                 <div className={styles.container}>

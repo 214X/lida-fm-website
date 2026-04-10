@@ -81,39 +81,45 @@ export const LazerMetrologyLabContent: Record<
             { value: "IR – VIS – UV", label: "Ölçüm yapılabilen dalgaboyları" },
             { value: "<1 ppm – 1000 ppm", label: "Soğurma Ölçüm Aralığı" },
             { value: "ISO 21254", label: "Lazer Hasar Eşik Test Standardı" },
+            { value: "ISO 11551", label: "Optik Soğurma Ölçüm Standardı" },
         ],
 
         areasTitle: "Çalışma Alanları",
         areas: [
             {
                 icon: <Aperture size={32} strokeWidth={1.5} />,
-                title: "Optik Soğurma ve Saçılma",
-                text: "1070 nm dalga boyunda interferometri ve kalorimetri yöntemleriyle 2B ve 3B haritalama.",
+                title: "İnterferometrik Yöntem ile Optik Soğurma Ölçümü",
+                text: "Fototermal Ortak Yol İnterferometri yöntemi ile kaplamalı/kaplamasız optik bileşenlerin zayıf optik soğurma ölçümleri <1 ppm - 1000 ppm aralığında gerçekleştirilmektedir. 2B yüzey ve 3B gözde soğurma haritalaması yapılabilmektedir.",
             },
             {
                 icon: <Zap size={32} strokeWidth={1.5} />,
-                title: "Lazer Hasar Eşiği (LIDT)",
-                text: "S-on-1 ve 1-on-1 yöntemleriyle 1064, 532, 355 ve 266 nm dalgaboylarında hasar eşiği testleri.",
-            },
-            {
-                icon: <Crosshair size={32} strokeWidth={1.5} />,
-                title: "Vakum ve Atmosferik Testler",
-                text: "Hem atmosferik hem de vakum ortamlarında optik dayanım ve performans testleri.",
-            },
-            {
-                icon: <Focus size={32} strokeWidth={1.5} />,
-                title: "Polarizör ve Ayna Karakterizasyonu",
-                text: "Yüksek yansıtıcılı aynalar ve geçirgen pencerelerin optik parametrelerinin ölçümü.",
+                title: "Kalorimetrik Yöntem ile Optik Soğurma Ölçümü",
+                text: "ISO 11551 standardı ile tanımlanan Lazer Kalorimetri yöntemi ile kaplamalı/kaplamasız optik bileşenlerin zayıf optik soğurma ölçümleri 1 ppm - 1000 ppm aralığında gerçekleştirilmektedir.",
             },
             {
                 icon: <RadioTower size={32} strokeWidth={1.5} />,
-                title: "Raster Tarama Analizi",
-                text: "Optik yüzeylerin raster tarama yöntemiyle detaylı karakterizasyonu ve analizleri.",
+                title: "Kavite Sönümleme Yöntemi (CRD)",
+                text: "Bileşenlerin optik kayıplarının ölçülmesi için CRD (Cavity Ring-Down) sistemi geliştirilmektedir.",
             },
             {
                 icon: <Microscope size={32} strokeWidth={1.5} />,
-                title: "ISO Standartlarında Referans",
-                text: "İlgili ISO (ISO 11551, ISO 21254) standartlarına uygun metrolojik değerlendirmeler.",
+                title: "ISO 21254 Kapsamında LIDT Ölçümleri",
+                text: "Kaplamalı/kaplamasız optik bileşenlerin Lazer-Uyarılmış Hasar Eşik (LIDT) değerleri, S-on-1 ve 1-on-1 ölçüm yöntemleri ile belirlenmektedir (Atmosfer ve vakum ortamı).",
+            },
+            {
+                icon: <Crosshair size={32} strokeWidth={1.5} />,
+                title: "Raster Tarama Yöntemi ile LIDT Ölçümleri",
+                text: "Optik bileşenlerin Klasik-LIDT ve Fonksiyonel-LIDT değerleri yüksek tekrarlanabilirlik ve düşük belirsizlik ile ölçülmektedir.",
+            },
+            {
+                icon: <Globe size={32} strokeWidth={1.5} />,
+                title: "Optik Frekans Tarağı Tabanlı Spektroskopi",
+                text: "Gaz konsantrasyonu ve termodinamik gaz sıcaklığı ölçümleri yapılabilmektedir.",
+            },
+            {
+                icon: <Activity size={32} strokeWidth={1.5} />,
+                title: "Fosfor Termometrisi",
+                text: "Fosfor malzemeler kullanılarak yüksek çözünürlüklü ve temassız yüzey sıcaklığı ölçümleri gerçekleştirilmektedir.",
             },
         ],
 
@@ -123,7 +129,7 @@ export const LazerMetrologyLabContent: Record<
         instruments: [
             {
                 title: "İnterferometrik Haritalama Sistemi",
-                text: "Optik bileşenlerin yüzey ve soğurma profillerini çıkarmada kullanılan 2B ve 3B haritalama cihazları.",
+                text: "Optik bileşenlerin yüzey ve soğurma profillerini çıkarmada kullanılan 2B ve 3B haritalama sistemi.",
             },
             {
                 title: "Kalorimetri Sistemi (1070 nm)",
@@ -216,7 +222,7 @@ export const LazerMetrologyLabContent: Record<
                 no: "1",
                 equipment: "Lazer Hasar Eşiği Test İstasyonu",
                 brand: "Özel Kurulum",
-                model: "LIDT-System-1",
+                model: "LIDT-System",
                 range: "1064, 532, 355, 266 nm",
                 purpose: "S-on-1, 1-on-1 ISO 21254 Testi",
             },
@@ -230,19 +236,11 @@ export const LazerMetrologyLabContent: Record<
             },
             {
                 no: "3",
-                equipment: "Vakum Odası",
-                brand: "Pfeiffer",
-                model: "HiCube serisi entegre",
+                equipment: "Vakum Ortamı LIDT",
+                brand: "Özel tasarım",
+                model: "LIDT-V-System",
                 range: "< 10^-6 mbar",
                 purpose: "Vakum ortamında LIDT testleri",
-            },
-            {
-                no: "4",
-                equipment: "İnterferometre",
-                brand: "Zygo / 4D Technology",
-                model: "Fizeau serisi",
-                range: "2B ve 3B",
-                purpose: "Optik yüzey ve haritalama",
             },
         ],
     },
@@ -268,39 +266,45 @@ export const LazerMetrologyLabContent: Record<
             { value: "IR – VIS – UV", label: "Measurable wavelengths" },
             { value: "<1 ppm – 1000 ppm", label: "Absorption Measurement Range" },
             { value: "ISO 21254", label: "Laser Damage Threshold Test Standard" },
+            { value: "ISO 11551", label: "Optical Absorption Measurement Standard" },
         ],
 
         areasTitle: "Research Areas",
         areas: [
             {
                 icon: <Aperture size={32} strokeWidth={1.5} />,
-                title: "Optical Absorption & Scattering",
-                text: "2D and 3D mapping using interferometry and calorimetry at 1070 nm wavelength.",
+                title: "Optical Absorption via Interferometry",
+                text: "Weak optical absorption measurements of coated/uncoated optical components are performed in the <1 ppm - 1000 ppm range using the Photothermal Common-Path Interferometry method. 2D surface and 3D bulk absorption mapping can be performed.",
             },
             {
                 icon: <Zap size={32} strokeWidth={1.5} />,
-                title: "Laser Induced Damage Threshold",
-                text: "LIDT tests using S-on-1 and 1-on-1 methods at 1064, 532, 355, and 266 nm.",
-            },
-            {
-                icon: <Crosshair size={32} strokeWidth={1.5} />,
-                title: "Vacuum and Atmospheric Tests",
-                text: "Optical performance and endurance testing in both atmospheric and vacuum environments.",
-            },
-            {
-                icon: <Focus size={32} strokeWidth={1.5} />,
-                title: "Mirror and Polarizer Characterization",
-                text: "Measuring optical parameters of highly reflective mirrors and transmissive windows.",
+                title: "Optical Absorption via Calorimetry",
+                text: "Weak optical absorption measurements of coated/uncoated optical components are performed in the 1 ppm - 1000 ppm range using the Laser Calorimetry method defined by the ISO 11551 standard.",
             },
             {
                 icon: <RadioTower size={32} strokeWidth={1.5} />,
-                title: "Raster Scanning Analysis",
-                text: "Detailed characterization and analysis of optical surfaces via raster scanning method.",
+                title: "Cavity Ring-Down Method (CRD)",
+                text: "A CRD system is being developed to precisely measure the optical losses of components.",
             },
             {
                 icon: <Microscope size={32} strokeWidth={1.5} />,
-                title: "ISO Standard References",
-                text: "Metrological evaluations carried out strictly according to ISO 11551 and ISO 21254.",
+                title: "LIDT Measurements under ISO 21254",
+                text: "Laser-Induced Damage Threshold (LIDT) values of coated/uncoated optical components are determined by S-on-1 and 1-on-1 measurement methods (Atmospheric and vacuum environments).",
+            },
+            {
+                icon: <Crosshair size={32} strokeWidth={1.5} />,
+                title: "LIDT Measurements via Raster Scanning",
+                text: "Classical-LIDT and Functional-LIDT values of optical components are measured with high repeatability and low uncertainty.",
+            },
+            {
+                icon: <Globe size={32} strokeWidth={1.5} />,
+                title: "Optical Frequency Comb-Based Spectroscopy",
+                text: "High-precision gas concentration and thermodynamic gas temperature measurements can be performed.",
+            },
+            {
+                icon: <Activity size={32} strokeWidth={1.5} />,
+                title: "Phosphor Thermometry",
+                text: "High-resolution, non-contact surface temperature measurements are performed using phosphor materials.",
             },
         ],
 
@@ -310,7 +314,7 @@ export const LazerMetrologyLabContent: Record<
         instruments: [
             {
                 title: "Interferometric Mapping System",
-                text: "2D and 3D mapping devices used to acquire the surface and absorption profiles of optics.",
+                text: "2D and 3D mapping system used to acquire the surface and absorption profiles of optics.",
             },
             {
                 title: "Calorimetry System (1070 nm)",
@@ -403,7 +407,7 @@ export const LazerMetrologyLabContent: Record<
                 no: "1",
                 equipment: "LIDT Testing Station",
                 brand: "Custom Setup",
-                model: "LIDT-System-1",
+                model: "LIDT-System",
                 range: "1064, 532, 355, 266 nm",
                 purpose: "S-on-1, 1-on-1 ISO 21254 Testing",
             },
@@ -417,19 +421,11 @@ export const LazerMetrologyLabContent: Record<
             },
             {
                 no: "3",
-                equipment: "Vacuum Chamber",
-                brand: "Pfeiffer",
-                model: "HiCube Series Integrated",
+                equipment: "Vacuum Environment LIDT",
+                brand: "Custom Design",
+                model: "LIDT-V-System",
                 range: "< 10^-6 mbar",
                 purpose: "Vacuum environment testing",
-            },
-            {
-                no: "4",
-                equipment: "Interferometer",
-                brand: "Zygo / 4D Technology",
-                model: "Fizeau Series",
-                range: "2D and 3D",
-                purpose: "Optical surface mapping",
             },
         ],
     },
