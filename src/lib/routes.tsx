@@ -36,6 +36,10 @@ export const routes: Record<
     thermophysicalLab: {
         tr: "/laboratuvarlar/termofiziksel",
         en: "/en/laboratories/thermophysical",
+    },
+    lazerMetrologyLab: {
+        tr: "/laboratuvarlar/lazer-metroloji",
+        en: "/en/laboratories/lazer-metrology",
     }
     // LABS ENDS
 };

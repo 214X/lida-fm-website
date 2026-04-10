@@ -3,7 +3,7 @@ import { homeContent } from "./homeContent";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { FiUsers, FiMail, FiBookOpen } from "react-icons/fi";
-import { Droplets, Thermometer, Wind, ArrowRight, ArrowUpRight, Lock, RadioTower, Layers } from "lucide-react";
+import { Droplets, Thermometer, Wind, ArrowRight, ArrowUpRight, Lock, RadioTower, Layers, ScanLine } from "lucide-react";
 import styles from "./HomePage.module.css";
 import { routes } from "@/lib/routes";
 import { publicationsData, getMonthName } from "@/data/publications";
@@ -63,6 +63,17 @@ export default function HomePage({ locale }: HomePageProps) {
                     ? "Isıl iletkenlik, özısı, ısıl yayılım ve emisivite ölçümlerinde BIPM izlenebilirliğiyle yüksek doğruluklu kalibrasyon hizmetleri."
                     : "High-accuracy calibration services with BIPM traceability in thermal conductivity, specific heat, thermal diffusivity, and emissivity measurements.",
             href: routes.thermophysicalLab[locale],
+            active: true,
+        },
+        {
+            icon: <ScanLine size={36} strokeWidth={1.5} />,
+            slug: "lazer-metrology",
+            title: locale === "tr" ? "Lazer Metroloji Laboratuvarı" : "Laser Metrology Laboratory",
+            description:
+                locale === "tr"
+                    ? "Optik bileşenlerin soğurma, saçılma ve lazer hasar eşiği gibi parametrelerini yüksek hassasiyet ve tekrarlanabilirlikle test eden altyapı."
+                    : "Infrastructure for testing parameters such as absorption, scattering, and laser damage threshold of optical components with high sensitivity.",
+            href: routes.lazerMetrologyLab[locale],
             active: true,
         },
     ];

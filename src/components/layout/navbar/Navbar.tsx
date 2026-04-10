@@ -50,12 +50,14 @@ export default function Navbar() {
   const isLabActive =
     isActive(routes.humidityLab[locale]) ||
     isActive(routes.radiationTemperatureLab[locale]) ||
-    isActive(routes.thermophysicalLab[locale]);
+    isActive(routes.thermophysicalLab[locale]) ||
+    isActive(routes.lazerMetrologyLab[locale]);
 
   const labNames = {
     humidity: locale === "tr" ? "Nem Laboratuvarı" : "Humidity Laboratory",
     radiation: locale === "tr" ? "Radyasyon Sıcaklığı Laboratuvarı" : "Radiation Temperature Laboratory",
-    thermophysical: locale === "tr" ? "Termofiziksel Özellikler Laboratuvarı" : "Thermophysical Properties Laboratory"
+    thermophysical: locale === "tr" ? "Termofiziksel Özellikler Laboratuvarı" : "Thermophysical Properties Laboratory",
+    lazer: locale === "tr" ? "Lazer Metroloji Laboratuvarı" : "Laser Metrology Laboratory"
   };
 
   return (
@@ -149,6 +151,14 @@ export default function Navbar() {
                 className={isActive(routes.thermophysicalLab[locale]) ? styles.activeLink : ""}
               >
                 {labNames.thermophysical}
+              </Link>
+
+              <Link
+                href={routes.lazerMetrologyLab[locale]}
+                onClick={() => setLabsOpen(false)}
+                className={isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""}
+              >
+                {labNames.lazer}
               </Link>
             </div>
           </div>
@@ -255,6 +265,14 @@ export default function Navbar() {
                   className={isActive(routes.thermophysicalLab[locale]) ? styles.activeLink : ""}
                 >
                   {labNames.thermophysical}
+                </Link>
+
+                <Link
+                  href={routes.lazerMetrologyLab[locale]}
+                  onClick={closeMenu}
+                  className={isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""}
+                >
+                  {labNames.lazer}
                 </Link>
               </div>
             </div>
