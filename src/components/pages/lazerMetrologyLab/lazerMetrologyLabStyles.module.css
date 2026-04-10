@@ -208,7 +208,7 @@
 }
 
 .statValue {
-    font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
     font-weight: 800;
     line-height: 1.1;
     white-space: nowrap;
@@ -567,7 +567,7 @@
     }
 
     .statValue {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .instrumentBody h3 {
