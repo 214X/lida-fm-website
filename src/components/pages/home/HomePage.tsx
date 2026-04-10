@@ -3,7 +3,8 @@ import { homeContent } from "./homeContent";
 import { ReactNode } from "react";
 import Link from "next/link";
 import { FiUsers, FiMail, FiBookOpen } from "react-icons/fi";
-import { Droplets, Thermometer, Wind, ArrowRight, ArrowUpRight, Lock, RadioTower, Layers, ScanLine } from "lucide-react";
+import { GiLaserPrecision } from "react-icons/gi";
+import { Droplets, Thermometer, Wind, ArrowRight, ArrowUpRight, Lock, RadioTower, Layers, Zap } from "lucide-react";
 import styles from "./HomePage.module.css";
 import { routes } from "@/lib/routes";
 import { publicationsData, getMonthName } from "@/data/publications";
@@ -66,7 +67,7 @@ export default function HomePage({ locale }: HomePageProps) {
             active: true,
         },
         {
-            icon: <ScanLine size={36} strokeWidth={1.5} />,
+            icon: <GiLaserPrecision size={36} />,
             slug: "lazer-metrology",
             title: locale === "tr" ? "Lazer Metroloji Laboratuvarı" : "Laser Metrology Laboratory",
             description:
