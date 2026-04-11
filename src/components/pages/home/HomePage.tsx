@@ -118,6 +118,22 @@ export default function HomePage({ locale }: HomePageProps) {
                         <p>{content.description}</p>
                     </div>
                 </div>
+
+                {/* Mouse Scroll Indicator (Desktop) */}
+                <div className={styles.desktopIndicator}>
+                    <div className={styles.mousePill}>
+                        <div className={styles.mouseWheel}></div>
+                    </div>
+                    <span className={styles.desktopText}>{locale === "tr" ? "Kaydır" : "Scroll"}</span>
+                </div>
+
+                {/* Swipe/Discover Indicator (Mobile) */}
+                <div className={styles.mobileIndicator}>
+                    <span className={styles.scrollText}>{locale === "tr" ? "Keşfet" : "Discover"}</span>
+                    <div className={styles.scrollPill}>
+                        <div className={styles.scrollDot}></div>
+                    </div>
+                </div>
             </section>
 
             {/* ─── LABORATORIES SECTION ─── */}
