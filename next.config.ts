@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: true,
       },
+      {
+        source: '/en/kopyasi-latso',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
 };
