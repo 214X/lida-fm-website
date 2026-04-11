@@ -54,10 +54,10 @@ export default function Navbar() {
     isActive(routes.lazerMetrologyLab[locale]);
 
   const labNames = {
+    lazer: locale === "tr" ? "Lazer Metroloji Laboratuvarı" : "Laser Metrology Laboratory",
     humidity: locale === "tr" ? "Nem Laboratuvarı" : "Humidity Laboratory",
     radiation: locale === "tr" ? "Radyasyon Sıcaklığı Laboratuvarı" : "Radiation Temperature Laboratory",
     thermophysical: locale === "tr" ? "Termofiziksel Özellikler Laboratuvarı" : "Thermophysical Properties Laboratory",
-    lazer: locale === "tr" ? "Lazer Metroloji Laboratuvarı" : "Laser Metrology Laboratory"
   };
 
   return (
@@ -84,27 +84,24 @@ export default function Navbar() {
         <div className={styles.navLinks}>
           <Link
             href={routes.home[locale]}
-            className={`${styles.navLink} ${
-              isActive(routes.home[locale]) ? styles.active : ""
-            }`}
+            className={`${styles.navLink} ${isActive(routes.home[locale]) ? styles.active : ""
+              }`}
           >
             {locale === "tr" ? "Ana Sayfa" : "Home"}
           </Link>
 
           <Link
             href={routes.aboutUs[locale]}
-            className={`${styles.navLink} ${
-              isActive(routes.aboutUs[locale]) ? styles.active : ""
-            }`}
+            className={`${styles.navLink} ${isActive(routes.aboutUs[locale]) ? styles.active : ""
+              }`}
           >
             {locale === "tr" ? "Hakkımızda" : "About Us"}
           </Link>
 
           <Link
             href={routes.publications[locale]}
-            className={`${styles.navLink} ${
-              isActive(routes.publications[locale]) ? styles.active : ""
-            }`}
+            className={`${styles.navLink} ${isActive(routes.publications[locale]) ? styles.active : ""
+              }`}
           >
             {locale === "tr" ? "Yayınlar" : "Publications"}
           </Link>
@@ -116,19 +113,26 @@ export default function Navbar() {
             onMouseLeave={() => setLabsOpen(false)}
           >
             <button
-              className={`${styles.navLink} ${
-                isLabActive ? `${styles.active} ${styles.labActive}` : ""
-              }`}
+              className={`${styles.navLink} ${isLabActive ? `${styles.active} ${styles.labActive}` : ""
+                }`}
             >
               {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
               <ChevronDown size={15} />
             </button>
 
             <div
-              className={`${styles.dropdownMenu} ${
-                labsOpen ? styles.dropdownOpen : ""
-              }`}
+              className={`${styles.dropdownMenu} ${labsOpen ? styles.dropdownOpen : ""
+                }`}
             >
+              <Link
+                href={routes.lazerMetrologyLab[locale]}
+                onClick={() => setLabsOpen(false)}
+                className={`${isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""} ${styles.flexLink}`}
+              >
+                {labNames.lazer}
+                <span className={styles.newBadge} />
+              </Link>
+
               <Link
                 href={routes.humidityLab[locale]}
                 onClick={() => setLabsOpen(false)}
@@ -152,22 +156,13 @@ export default function Navbar() {
               >
                 {labNames.thermophysical}
               </Link>
-
-              <Link
-                href={routes.lazerMetrologyLab[locale]}
-                onClick={() => setLabsOpen(false)}
-                className={isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""}
-              >
-                {labNames.lazer}
-              </Link>
             </div>
           </div>
 
           <Link
             href={routes.contact[locale]}
-            className={`${styles.navLink} ${
-              isActive(routes.contact[locale]) ? styles.active : ""
-            }`}
+            className={`${styles.navLink} ${isActive(routes.contact[locale]) ? styles.active : ""
+              }`}
           >
             {locale === "tr" ? "İletişim" : "Contact"}
           </Link>
@@ -231,16 +226,14 @@ export default function Navbar() {
               {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
               <ChevronDown
                 size={16}
-                className={`${styles.chevron} ${
-                  labsOpen ? styles.rotate : ""
-                }`}
+                className={`${styles.chevron} ${labsOpen ? styles.rotate : ""
+                  }`}
               />
             </button>
 
             <div
-              className={`${styles.subMenu} ${
-                labsOpen ? styles.subMenuOpen : ""
-              }`}
+              className={`${styles.subMenu} ${labsOpen ? styles.subMenuOpen : ""
+                }`}
             >
               <div className={styles.subMenuInner}>
                 <Link
@@ -270,9 +263,10 @@ export default function Navbar() {
                 <Link
                   href={routes.lazerMetrologyLab[locale]}
                   onClick={closeMenu}
-                  className={isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""}
+                  className={`${isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""} ${styles.flexLink}`}
                 >
                   {labNames.lazer}
+                  <span className={styles.newBadge} />
                 </Link>
               </div>
             </div>

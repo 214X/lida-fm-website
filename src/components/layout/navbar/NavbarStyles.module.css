@@ -234,3 +234,19 @@
 .labActive::after {
   bottom: 4.2px;
 }
+
+.flexLink {
+  display: inline-flex;
+  align-items: center;
+}
+
+.newBadge {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--tubitak-red);
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  box-shadow: 0 0 6px rgba(223, 31, 38, 0.6);
+  transform: translateY(-1px);
+}
