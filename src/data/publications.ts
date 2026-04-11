@@ -1,5 +1,7 @@
 import { Locale } from "@/types/locale";
 
+export type LabKey = "lazer" | "humidity" | "radiation" | "thermophysical";
+
 export type Publication = {
     id: string;
     day: number;
@@ -9,6 +11,7 @@ export type Publication = {
     description: string;
     href: string;
     journal?: string;
+    labKey?: LabKey;
 };
 
 // Publications are sorted with the newest first (index 0 is the latest publication).
@@ -22,6 +25,7 @@ export const publicationsData: Publication[] = [
         description: "The coupling effect of gamma-ray radiation and 532 nm nanosecond laser radiation on optical coatings and substrates was investigated. Fused silica and S-BSL7 glass with 532 nm high reflectivity (HR) coatings were irradiated using 60Co gamma-ray source at a dose rate of 1 Gy/s for a total dose of 1–500 kGy...",
         href: "https://opg.optica.org/oe/fulltext.cfm?uri=oe-32-27-49021&id=566348",
         journal: "Optics Express",
+        labKey: "lazer",
     },
     {
         id: "pub-2",
@@ -32,6 +36,7 @@ export const publicationsData: Publication[] = [
         description: "Different laser damage testing protocols, including 1-on-1, S-on-1, and Raster Scan, were conducted on 532 nm polarizers to evaluate the damage resistance and mechanisms...",
         href: "https://www.sciencedirect.com/science/article/pii/S0925346724003070",
         journal: "Optics & Laser Technology",
+        labKey: "lazer",
     },
     {
         id: "pub-3",
@@ -42,6 +47,7 @@ export const publicationsData: Publication[] = [
         description: "The laser damage characteristics of the thin-film polarizers for the wavelength of 532 nm and AOI of 56° were investigated using a Nd:YAG laser system...",
         href: "https://www.sciencedirect.com/science/article/pii/S0925346724003070",
         journal: "Optics & Laser Technology",
+        labKey: "lazer",
     },
     {
         id: "pub-4",
@@ -52,6 +58,7 @@ export const publicationsData: Publication[] = [
         description: "Laser-induced damage to optical components is a limitation for designing highly sensitive biosensors. This study investigated the laser-induced damage threshold (LIDT) of high-quality microscope glass slides...",
         href: "https://www.mdpi.com/2304-6732/10/9/967",
         journal: "Photonics (MDPI)",
+        labKey: "lazer",
     },
     {
         id: "pub-5",
@@ -62,6 +69,7 @@ export const publicationsData: Publication[] = [
         description: "In the current work, we describe a process of optimizing a laser calorimeter system to characterize the thermal performance of optical glasses and thin films in a vacuum environment...",
         href: "https://www.researchgate.net/publication/374750527_A_Multiwavelength_Vacuum_Environment_Laser_Calorimetry_System",
         journal: "ResearchGate",
+        labKey: "lazer",
     },
 ];
 
