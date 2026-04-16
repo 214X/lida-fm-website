@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Locale } from "@/types/locale";
 import type { Project } from "@/data/projects";
 import styles from "./ProjectsStyles.module.css";
@@ -6,19 +7,16 @@ import styles from "./ProjectsStyles.module.css";
 type ProjectCardProps = {
   project: Project;
   locale: Locale;
-  onOpen: () => void;
 };
 
-export default function ProjectCard({ project, locale, onOpen }: ProjectCardProps) {
+export default function ProjectCard({ project, locale }: ProjectCardProps) {
   const isPlaceholder = project.id === "placeholder";
+  const href = locale === "tr"
+    ? `/projeler/${project.id}`
+    : `/en/projects/${project.id}`;
 
-  return (
-    <button
-      className={styles.card}
-      onClick={onOpen}
-      aria-label={`${locale === "tr" ? "Projeyi aç" : "Open project"}: ${project.title[locale]}`}
-      type="button"
-    >
+  const cardContent = (
+    <>
       <div className={styles.cardImageWrapper}>
         <Image
           src={project.coverImage}
@@ -37,14 +35,6 @@ export default function ProjectCard({ project, locale, onOpen }: ProjectCardProp
       </div>
 
       <div className={styles.cardBody}>
-        {/* <div className={styles.cardTags}>
-          {project.tags.slice(0, 3).map((tag) => (
-            <span key={tag} className={styles.tag}>
-              {tag}
-            </span>
-          ))}
-        </div> */}
-
         <h3 className={styles.cardTitle}>{project.title[locale]}</h3>
         <p className={styles.cardSummary}>{project.summary[locale]}</p>
 
@@ -56,6 +46,25 @@ export default function ProjectCard({ project, locale, onOpen }: ProjectCardProp
           </svg>
         </span>
       </div>
-    </button>
+    </>
+  );
+
+  // Placeholder cards are not clickable
+  if (isPlaceholder) {
+    return (
+      <div className={`${styles.card} ${styles.cardDisabled}`} aria-disabled="true">
+        {cardContent}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={styles.card}
+      aria-label={`${locale === "tr" ? "Projeyi görüntüle" : "View project"}: ${project.title[locale]}`}
+    >
+      {cardContent}
+    </Link>
   );
 }

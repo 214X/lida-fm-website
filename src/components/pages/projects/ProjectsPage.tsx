@@ -1,10 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import { Locale } from "@/types/locale";
-import { projectsData, Project } from "@/data/projects";
+import { projectsData } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
-import ProjectModal from "./ProjectModal";
 import styles from "./ProjectsStyles.module.css";
 
 type ProjectsPageProps = {
@@ -12,8 +8,6 @@ type ProjectsPageProps = {
 };
 
 export default function ProjectsPage({ locale }: ProjectsPageProps) {
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
     return (
         <>
         {/* HERO */}
@@ -46,20 +40,10 @@ export default function ProjectsPage({ locale }: ProjectsPageProps) {
                     key={project.id}
                     project={project}
                     locale={locale}
-                    onOpen={() => setSelectedProject(project)}
                 />
             ))}
             </div>
         </main>
-
-        {/* MODAL */}
-        {selectedProject && (
-            <ProjectModal
-                project={selectedProject}
-                locale={locale}
-                onClose={() => setSelectedProject(null)}
-            />
-        )}
         </>
     );
 }

@@ -103,36 +103,4 @@ export const projectsData: Project[] = [
       },
     ],
   },
-  {
-    id: "placeholder",
-    title: {
-      tr: "Yeni Proje (Yakında)",
-      en: "New Project (Coming Soon)",
-    },
-    summary: {
-      tr: "Bu proje hakkında detaylar yakında paylaşılacaktır.",
-      en: "Details about this project will be shared soon.",
-    },
-    description: {
-      tr: [
-        "Bu proje şu anda geliştirme aşamasındadır. Detaylı bilgiler yakında bu sayfada yayınlanacaktır.",
-        "Termodinamik ve Dinamik Metroloji Laboratuvarlarının yeni araştırma projelerinden biri olarak planlanmaktadır.",
-      ],
-      en: [
-        "This project is currently in the development phase. Detailed information will be published on this page soon.",
-        "It is planned as one of the new research projects of the Thermodynamic and Dynamic Metrology Laboratories.",
-      ],
-    },
-    purpose: {
-      tr: "Proje hedefleri yakında açıklanacaktır.",
-      en: "Project goals will be announced soon.",
-    },
-    stages: {
-      tr: ["Planlama aşaması", "Araştırma ve geliştirme"],
-      en: ["Planning phase", "Research and development"],
-    },
-    tags: ["Metroloji", "Ar-Ge"],
-    coverImage: "/images/hero.jpg",
-    images: [],
-  },
 ];

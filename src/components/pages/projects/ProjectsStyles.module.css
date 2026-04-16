@@ -28,7 +28,7 @@
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 5rem 2rem 4rem;
+  padding: 10rem 2rem 4rem;
 }
 
 .heroBadge {
@@ -111,21 +111,34 @@
 ============================================================ */
 .card {
   all: unset;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   background: white;
-  border-radius: 16px;
-  border: 1px solid #efefef;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 8px 32px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid #efefef;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 48px rgba(223, 31, 38, 0.12);
   border-color: rgba(223, 31, 38, 0.25);
+}
+
+.cardDisabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.cardDisabled:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-color: #efefef;
 }
 
 .card:focus-visible {
@@ -247,6 +260,61 @@
   gap: 0.75rem;
 }
 
+/* ============================================================
+  PROJECT DETAIL PAGE
+============================================================ */
+.detailPage {
+  background: #fff;
+  min-height: 100vh;
+  outline: none;
+}
+
+
+.detailBackBar {
+  background: white;
+  border-bottom: 1px solid #ebebeb;
+  position: sticky;
+  top: 4.2rem;
+  z-index: 40;
+}
+
+.detailBackInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0.75rem 2rem;
+}
+
+.detailBackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-grey);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.detailBackBtn:hover {
+  color: var(--tubitak-red);
+  transform: translateX(-4px);
+}
+
+.detailContainer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+@media (max-width: 768px) {
+  .detailContainer {
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .detailBackBar {
+    top: 60px;
+  }
+}
 /* ============================================================
   MODAL BACKDROP
 ============================================================ */
@@ -628,7 +696,8 @@
 .galleryMain {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
+  max-height: 65vh;
   border-radius: 12px;
   overflow: hidden;
   background: #f0f0ef;
@@ -782,7 +851,7 @@
   }
 
   .modalHeroContent {
-    padding: 1.25rem 1rem 1.5rem;
+    padding: 10rem 1rem 1.5rem;
   }
 
   .modalHeroTitle {
