@@ -190,6 +190,39 @@
   display: flex;
   align-items: center;
   gap: .35rem;
+  width: 100%;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menuLinkSplit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.menuLinkContent {
+  flex: 1;
+  padding: .7rem 0;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.menuLinkToggle {
+  padding: .7rem 1rem;
+  background: none;
+  border: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .chevron {
@@ -202,13 +235,13 @@
 }
 
 .subMenu {
-  height: 0;
+  max-height: 0;
   overflow: hidden;
-  transition: height .35s cubic-bezier(.22,1,.36,1);
+  transition: max-height .35s cubic-bezier(.22,1,.36,1);
 }
 
 .subMenuOpen {
-  height: 110px;
+  max-height: 500px;
 }
 
 .subMenuInner {

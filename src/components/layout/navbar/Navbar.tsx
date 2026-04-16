@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { routes } from "@/lib/routes";
 import { useState, useEffect } from "react";
 import { Menu, ChevronDown } from "lucide-react";
+import { projectsData } from "@/data/projects";
 import styles from "./NavbarStyles.module.css";
 
 export default function Navbar() {
@@ -17,12 +18,14 @@ export default function Navbar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [labsOpen, setLabsOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hovered, setHovered] = useState(false);
 
   const closeMenu = () => {
     setIsOpen(false);
     setLabsOpen(false);
+    setProjectsOpen(false);
   };
 
   useEffect(() => {
@@ -34,18 +37,29 @@ export default function Navbar() {
   useEffect(() => {
     setIsOpen(false);
     setLabsOpen(false);
+    setProjectsOpen(false);
   }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  const currentRouteKey =
+  const matchedRouteKey =
     (Object.keys(routes) as Array<keyof typeof routes>).find((key) => {
       return routes[key].tr === pathname || routes[key].en === pathname;
-    }) ?? "home";
+    });
 
+  let oppositeLangHref = routes.home[oppositeLocale];
+  if (matchedRouteKey) {
+    oppositeLangHref = routes[matchedRouteKey][oppositeLocale];
+  } else if (pathname.startsWith("/projeler/")) {
+    oppositeLangHref = `/en/projects/${pathname.substring(10)}`;
+  } else if (pathname.startsWith("/en/projects/")) {
+    oppositeLangHref = `/projeler/${pathname.substring(13)}`;
+  }
   const isActive = (route: string) => pathname === route;
+
+  const isProjectActive = pathname.startsWith(routes.projects[locale]);
 
   const isLabActive =
     isActive(routes.humidityLab[locale]) ||
@@ -106,13 +120,42 @@ export default function Navbar() {
             {locale === "tr" ? "Yayınlar" : "Publications"}
           </Link>
 
-          <Link
-            href={routes.projects[locale]}
-            className={`${styles.navLink} ${isActive(routes.projects[locale]) ? styles.active : ""
-              }`}
+          {/* PROJECTS DROPDOWN */}
+          <div
+            className={styles.navDropdown}
+            onMouseEnter={() => setProjectsOpen(true)}
+            onMouseLeave={() => setProjectsOpen(false)}
           >
-            {locale === "tr" ? "Projeler" : "Projects"}
-          </Link>
+            <Link
+              href={routes.projects[locale]}
+              onClick={() => setProjectsOpen(false)}
+              className={`${styles.navLink} ${isProjectActive ? `${styles.active} ${styles.labActive}` : ""
+                }`}
+            >
+              {locale === "tr" ? "Projeler" : "Projects"}
+              <ChevronDown size={15} />
+            </Link>
+
+            <div
+              className={`${styles.dropdownMenu} ${projectsOpen ? styles.dropdownOpen : ""
+                }`}
+            >
+              {projectsData.map(project => {
+                if (project.id === "placeholder") return null;
+                const projectHref = locale === "tr" ? `/projeler/${project.id}` : `/en/projects/${project.id}`;
+                return (
+                  <Link
+                    key={project.id}
+                    href={projectHref}
+                    onClick={() => setProjectsOpen(false)}
+                    className={isActive(projectHref) ? styles.activeLink : ""}
+                  >
+                    {project.title[locale]}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
 
           {/* LABS DROPDOWN */}
           <div
@@ -186,7 +229,7 @@ export default function Navbar() {
           </button>
 
           <Link
-            href={routes[currentRouteKey][oppositeLocale]}
+            href={oppositeLangHref}
             className={styles.localeSwitch}
           >
             {locale === "tr" ? "EN" : "TR"}
@@ -227,25 +270,69 @@ export default function Navbar() {
               {locale === "tr" ? "Yayınlar" : "Publications"}
             </Link>
 
-            <Link
-              href={routes.projects[locale]}
-              className={styles.menuLink}
-              onClick={closeMenu}
-            >
-              {locale === "tr" ? "Projeler" : "Projects"}
-            </Link>
+            {/* MOBILE PROJECTS DROPDOWN */}
+            <div className={styles.menuLinkSplit}>
+              <Link
+                href={routes.projects[locale]}
+                onClick={closeMenu}
+                className={styles.menuLinkContent}
+              >
+                {locale === "tr" ? "Projeler" : "Projects"}
+              </Link>
+              <button
+                className={styles.menuLinkToggle}
+                onClick={(e) => { e.preventDefault(); setProjectsOpen(!projectsOpen); }}
+                aria-label="Toggle Projects Dropdown"
+              >
+                <ChevronDown
+                  size={20}
+                  className={`${styles.chevron} ${projectsOpen ? styles.rotate : ""
+                    }`}
+                />
+              </button>
+            </div>
 
-            <button
-              className={styles.menuLink}
-              onClick={() => setLabsOpen(!labsOpen)}
+            <div
+              className={`${styles.subMenu} ${projectsOpen ? styles.subMenuOpen : ""
+                }`}
             >
-              {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
-              <ChevronDown
-                size={16}
-                className={`${styles.chevron} ${labsOpen ? styles.rotate : ""
-                  }`}
-              />
-            </button>
+              <div className={styles.subMenuInner}>
+                {projectsData.map(project => {
+                  if (project.id === "placeholder") return null;
+                  const projectHref = locale === "tr" ? `/projeler/${project.id}` : `/en/projects/${project.id}`;
+                  return (
+                    <Link
+                      key={project.id}
+                      href={projectHref}
+                      onClick={closeMenu}
+                      className={isActive(projectHref) ? styles.activeLink : ""}
+                    >
+                      {project.title[locale]}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className={styles.menuLinkSplit}>
+              <button
+                className={styles.menuLinkContent}
+                onClick={() => setLabsOpen(!labsOpen)}
+              >
+                {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
+              </button>
+              <button
+                className={styles.menuLinkToggle}
+                onClick={() => setLabsOpen(!labsOpen)}
+                aria-label="Toggle Laboratories Dropdown"
+              >
+                <ChevronDown
+                  size={20}
+                  className={`${styles.chevron} ${labsOpen ? styles.rotate : ""
+                    }`}
+                />
+              </button>
+            </div>
 
             <div
               className={`${styles.subMenu} ${labsOpen ? styles.subMenuOpen : ""
