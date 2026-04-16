@@ -21,8 +21,8 @@ export const projectsData: Project[] = [
   {
     id: "latso",
     title: {
-      tr: "LatSO Projesi",
-      en: "LatSO Project",
+      tr: "LatSO",
+      en: "LatSO",
     },
     summary: {
       tr: "Uzay kalifiye optiklerin lazer dayanıklılığının araştırılması ve standartlaştırılması.",
