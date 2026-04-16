@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [labsOpen, setLabsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [hovered, setHovered] = useState(true);
+  const [hovered, setHovered] = useState(false);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -104,6 +104,14 @@ export default function Navbar() {
               }`}
           >
             {locale === "tr" ? "Yayınlar" : "Publications"}
+          </Link>
+
+          <Link
+            href={routes.projects[locale]}
+            className={`${styles.navLink} ${isActive(routes.projects[locale]) ? styles.active : ""
+              }`}
+          >
+            {locale === "tr" ? "Projeler" : "Projects"}
           </Link>
 
           {/* LABS DROPDOWN */}
@@ -217,6 +225,14 @@ export default function Navbar() {
               onClick={closeMenu}
             >
               {locale === "tr" ? "Yayınlar" : "Publications"}
+            </Link>
+
+            <Link
+              href={routes.projects[locale]}
+              className={styles.menuLink}
+              onClick={closeMenu}
+            >
+              {locale === "tr" ? "Projeler" : "Projects"}
             </Link>
 
             <button

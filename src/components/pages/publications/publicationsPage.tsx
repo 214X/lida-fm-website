@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Locale } from "@/types/locale";
 import { publicationsContent } from "./publicationsContent";
 import styles from "./PublicationsStyles.module.css";
@@ -21,22 +21,40 @@ type PublicationsPageProps = {
 export default function PublicationsPage({ locale }: PublicationsPageProps) {
   const content = publicationsContent[locale];
   const [activeTab, setActiveTab] = useState<LabKey | "all">("all");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Group by lab
   const groupedPubs: Partial<Record<LabKey, Publication[]>> = {};
   publicationsData.forEach(pub => {
-      // Default to lazer if labKey is unset
-      const key = pub.labKey || "lazer";
-      if (!groupedPubs[key]) groupedPubs[key] = [];
-      groupedPubs[key].push(pub);
+    const key = pub.labKey || "lazer";
+    if (!groupedPubs[key]) groupedPubs[key] = [];
+    groupedPubs[key].push(pub);
   });
 
   const sortedKeys: LabKey[] = ["lazer", "humidity", "radiation", "thermophysical"];
 
-  // Calculate displayed count dynamically based on the active tab
-  const displayedCount = activeTab === "all" 
-    ? publicationsData.length 
+  const displayedCount = activeTab === "all"
+    ? publicationsData.length
     : (groupedPubs[activeTab]?.length || 0);
+
+  const allOptions: { value: LabKey | "all"; label: string }[] = [
+    { value: "all", label: locale === "tr" ? "Tüm Yayınlar" : "All Publications" },
+    ...sortedKeys.map(key => ({ value: key as LabKey | "all", label: LAB_NAMES[key][locale] })),
+  ];
+
+  const activeLabel = allOptions.find(o => o.value === activeTab)?.label ?? "";
+
+  // Close on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
 
   return (
     <>
@@ -64,25 +82,65 @@ export default function PublicationsPage({ locale }: PublicationsPageProps) {
         </div>
       </div>
 
-      {/* FILTER DROPDOWN */}
-      <div className={styles.dropdownContainer}>
-        <label className={styles.filterLabel} htmlFor="lab-filter">
+      {/* CUSTOM FILTER DROPDOWN */}
+      <div className={styles.filterBar}>
+        <label className={styles.filterLabel}>
           {locale === "tr" ? "Laboratuvara Göre Filtrele:" : "Filter by Laboratory:"}
         </label>
-        <div className={styles.selectWrapper}>
-            <select 
-              id="lab-filter"
-              className={styles.selectUI}
-              value={activeTab}
-              onChange={(e) => setActiveTab(e.target.value as LabKey | "all")}
+
+        <div className={styles.customDropdown} ref={dropdownRef}>
+          {/* Trigger button */}
+          <button
+            className={`${styles.dropdownTrigger} ${dropdownOpen ? styles.dropdownTriggerOpen : ""}`}
+            onClick={() => setDropdownOpen(v => !v)}
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded={dropdownOpen}
+          >
+            <span className={styles.dropdownTriggerDot} />
+            <span className={styles.dropdownTriggerLabel}>{activeLabel}</span>
+            <svg
+              className={`${styles.dropdownChevron} ${dropdownOpen ? styles.dropdownChevronOpen : ""}`}
+              width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" strokeWidth="2.5"
+              strokeLinecap="round" strokeLinejoin="round"
             >
-              <option value="all">{locale === "tr" ? "Tüm Yayınlar" : "All Publications"}</option>
-              {sortedKeys.map(key => (
-                <option key={key} value={key}>
-                  {LAB_NAMES[key][locale]}
-                </option>
-              ))}
-            </select>
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </button>
+
+          {/* Options menu */}
+          {dropdownOpen && (
+            <ul
+              className={styles.dropdownMenu}
+              role="listbox"
+              aria-label={locale === "tr" ? "Laboratuvar filtresi" : "Laboratory filter"}
+            >
+              {allOptions.map(opt => {
+                const isActive = activeTab === opt.value;
+                return (
+                  <li
+                    key={opt.value}
+                    role="option"
+                    aria-selected={isActive}
+                    className={`${styles.dropdownItem} ${isActive ? styles.dropdownItemActive : ""}`}
+                    onClick={() => { setActiveTab(opt.value); setDropdownOpen(false); }}
+                  >
+                    <span className={styles.dropdownItemCheck}>
+                      {isActive && (
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" strokeWidth="2.5"
+                          strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      )}
+                    </span>
+                    {opt.label}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
       </div>
 
@@ -91,15 +149,15 @@ export default function PublicationsPage({ locale }: PublicationsPageProps) {
         {sortedKeys
           .filter(labKey => activeTab === "all" || activeTab === labKey)
           .map((labKey) => {
-          const pubs = groupedPubs[labKey];
+            const pubs = groupedPubs[labKey];
 
-          return (
-            <div key={labKey} className={styles.labSection}>
-              <div className={styles.labSectionHeader}>
-                <h2 className={styles.labSectionTitle}>{LAB_NAMES[labKey][locale]}</h2>
-              </div>
-              
-              {pubs && pubs.length > 0 ? (
+            return (
+              <div key={labKey} className={styles.labSection}>
+                <div className={styles.labSectionHeader}>
+                  <h2 className={styles.labSectionTitle}>{LAB_NAMES[labKey][locale]}</h2>
+                </div>
+
+                {pubs && pubs.length > 0 ? (
                   <div className={styles.labPubsGrid}>
                     {pubs.map((pub) => (
                       <PublicationCard
@@ -115,14 +173,14 @@ export default function PublicationsPage({ locale }: PublicationsPageProps) {
                       />
                     ))}
                   </div>
-              ) : (
+                ) : (
                   <div className={styles.emptyState}>
-                     {locale === "tr" ? "Bu laboratuvara ait yayın bulunmamaktadır." : "No publications listed for this laboratory yet."}
+                    {locale === "tr" ? "Bu laboratuvara ait yayın bulunmamaktadır." : "No publications listed for this laboratory yet."}
                   </div>
-              )}
-            </div>
-          );
-        })}
+                )}
+              </div>
+            );
+          })}
       </main>
     </>
   );

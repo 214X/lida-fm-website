@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { Locale } from "@/types/locale";
-import { ProjectsContent } from "./projectsContent";
+import { projectsData, Project } from "@/data/projects";
+import ProjectCard from "./ProjectCard";
+import ProjectModal from "./ProjectModal";
 import styles from "./ProjectsStyles.module.css";
 
 type ProjectsPageProps = {
@@ -7,24 +12,54 @@ type ProjectsPageProps = {
 };
 
 export default function ProjectsPage({ locale }: ProjectsPageProps) {
-    const content = ProjectsContent[locale];
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
     return (
         <>
-            <section className={styles.hero}>
-                <div className={styles.overlay} />
+        {/* HERO */}
+        <section className={styles.hero}>
+            <div className={styles.overlay} />
+            <div className={styles.heroContent}>
+            <span className={styles.heroBadge}>TDML</span>
+            <h1>{locale === "tr" ? "Projeler" : "Projects"}</h1>
+            <p>
+                {locale === "tr"
+                ? "Termodinamik ve Dinamik Metroloji Laboratuvarları'nın yürüttüğü araştırma projeleri."
+                : "Research projects conducted by the Thermodynamic and Dynamic Metrology Laboratories."}
+            </p>
+            </div>
+        </section>
 
-                <div className={styles.heroContent}>
-                    <h1>{content.title}</h1>
-                </div>
-            </section>
+        {/* STATS STRIP */}
+        <div className={styles.statsStrip}>
+            <div className={styles.statsInner}>
+            <strong>{projectsData.length}</strong>
+            {locale === "tr" ? "proje listelendi" : "projects listed"}
+            </div>
+        </div>
 
-            <section className={styles.content}>
-                <h2>Devam Eden İçerik</h2>
-                <p>
-                    Buradan sonra normal sayfa akışı devam eder.
-                </p>
-            </section>
+        {/* PROJECT CARDS */}
+        <main className={styles.projectsWrapper}>
+            <div className={styles.projectsGrid}>
+            {projectsData.map((project) => (
+                <ProjectCard
+                    key={project.id}
+                    project={project}
+                    locale={locale}
+                    onOpen={() => setSelectedProject(project)}
+                />
+            ))}
+            </div>
+        </main>
+
+        {/* MODAL */}
+        {selectedProject && (
+            <ProjectModal
+                project={selectedProject}
+                locale={locale}
+                onClose={() => setSelectedProject(null)}
+            />
+        )}
         </>
     );
 }
