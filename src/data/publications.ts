@@ -519,9 +519,41 @@ export const publicationsData: Publication[] = [
     },
 ];
 
-export function getMonthName(month: number, locale: "tr" | "en") {
-    const date = new Date(2024, month - 1, 1);
-    return date.toLocaleString(locale === "tr" ? "tr-TR" : "en-US", {
-        month: "long",
-    }).toUpperCase();
+export function getMonthName(month: number, locale: Locale) {
+    const months = {
+        tr: [
+            "OCAK",
+            "ŞUBAT",
+            "MART",
+            "NİSAN",
+            "MAYIS",
+            "HAZİRAN",
+            "TEMMUZ",
+            "AĞUSTOS",
+            "EYLÜL",
+            "EKİM",
+            "KASIM",
+            "ARALIK",
+        ],
+        en: [
+            "JANUARY",
+            "FEBRUARY",
+            "MARCH",
+            "APRIL",
+            "MAY",
+            "JUNE",
+            "JULY",
+            "AUGUST",
+            "SEPTEMBER",
+            "OCTOBER",
+            "NOVEMBER",
+            "DECEMBER",
+        ],
+    };
+
+    if (month < 1 || month > 12) {
+        throw new Error(`Invalid month: ${month}`);
+    }
+
+    return months[locale][month - 1];
 }
