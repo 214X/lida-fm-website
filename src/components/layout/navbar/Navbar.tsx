@@ -7,6 +7,7 @@ import { routes } from "@/lib/routes";
 import { useState, useEffect } from "react";
 import { Menu, ChevronDown } from "lucide-react";
 import { projectsData } from "@/data/projects";
+import { laboratoriesData } from "@/data/laboratories";
 import styles from "./NavbarStyles.module.css";
 
 export default function Navbar() {
@@ -61,18 +62,8 @@ export default function Navbar() {
 
   const isProjectActive = pathname.startsWith(routes.projects[locale]);
 
-  const isLabActive =
-    isActive(routes.humidityLab[locale]) ||
-    isActive(routes.radiationTemperatureLab[locale]) ||
-    isActive(routes.thermophysicalLab[locale]) ||
-    isActive(routes.lazerMetrologyLab[locale]);
+  const isLabActive = pathname.startsWith(routes.laboratories[locale]);
 
-  const labNames = {
-    lazer: locale === "tr" ? "Lazer Metroloji Laboratuvarı" : "Laser Metrology Laboratory",
-    humidity: locale === "tr" ? "Nem Laboratuvarı" : "Humidity Laboratory",
-    radiation: locale === "tr" ? "Radyasyon Sıcaklığı Laboratuvarı" : "Radiation Temperature Laboratory",
-    thermophysical: locale === "tr" ? "Termofiziksel Özellikler Laboratuvarı" : "Thermophysical Properties Laboratory",
-  };
 
   return (
     <nav
@@ -157,56 +148,36 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* LABS DROPDOWN */}
           <div
             className={styles.navDropdown}
             onMouseEnter={() => setLabsOpen(true)}
             onMouseLeave={() => setLabsOpen(false)}
           >
-            <button
+            <Link
+              href={routes.laboratories[locale]}
+              onClick={() => setLabsOpen(false)}
               className={`${styles.navLink} ${isLabActive ? `${styles.active} ${styles.labActive}` : ""
                 }`}
             >
               {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
               <ChevronDown size={15} />
-            </button>
+            </Link>
 
             <div
               className={`${styles.dropdownMenu} ${labsOpen ? styles.dropdownOpen : ""
                 }`}
             >
-              <Link
-                href={routes.lazerMetrologyLab[locale]}
-                onClick={() => setLabsOpen(false)}
-                className={`${isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""} ${styles.flexLink}`}
-              >
-                {labNames.lazer}
-                <span className={styles.newBadge} />
-              </Link>
-
-              <Link
-                href={routes.humidityLab[locale]}
-                onClick={() => setLabsOpen(false)}
-                className={isActive(routes.humidityLab[locale]) ? styles.activeLink : ""}
-              >
-                {labNames.humidity}
-              </Link>
-
-              <Link
-                href={routes.radiationTemperatureLab[locale]}
-                onClick={() => setLabsOpen(false)}
-                className={isActive(routes.radiationTemperatureLab[locale]) ? styles.activeLink : ""}
-              >
-                {labNames.radiation}
-              </Link>
-
-              <Link
-                href={routes.thermophysicalLab[locale]}
-                onClick={() => setLabsOpen(false)}
-                className={isActive(routes.thermophysicalLab[locale]) ? styles.activeLink : ""}
-              >
-                {labNames.thermophysical}
-              </Link>
+              {laboratoriesData.map((lab) => (
+                  <Link
+                      key={lab.slug}
+                      href={lab.href[locale]}
+                      onClick={() => setLabsOpen(false)}
+                      className={`${isActive(lab.href[locale]) ? styles.activeLink : ""} ${lab.slug === "lazer-metrology" ? styles.flexLink : ""}`}
+                  >
+                      {lab.title[locale]}
+                      {lab.slug === "lazer-metrology" && <span className={styles.newBadge} />}
+                  </Link>
+              ))}
             </div>
           </div>
 
@@ -315,15 +286,16 @@ export default function Navbar() {
             </div>
 
             <div className={styles.menuLinkSplit}>
-              <button
+              <Link
+                href={routes.laboratories[locale]}
+                onClick={closeMenu}
                 className={styles.menuLinkContent}
-                onClick={() => setLabsOpen(!labsOpen)}
               >
                 {locale === "tr" ? "Laboratuvarlar" : "Laboratories"}
-              </button>
+              </Link>
               <button
                 className={styles.menuLinkToggle}
-                onClick={() => setLabsOpen(!labsOpen)}
+                onClick={(e) => { e.preventDefault(); setLabsOpen(!labsOpen); }}
                 aria-label="Toggle Laboratories Dropdown"
               >
                 <ChevronDown
@@ -339,38 +311,17 @@ export default function Navbar() {
                 }`}
             >
               <div className={styles.subMenuInner}>
-                <Link
-                  href={routes.humidityLab[locale]}
-                  onClick={closeMenu}
-                  className={isActive(routes.humidityLab[locale]) ? styles.activeLink : ""}
-                >
-                  {labNames.humidity}
-                </Link>
-
-                <Link
-                  href={routes.radiationTemperatureLab[locale]}
-                  onClick={closeMenu}
-                  className={isActive(routes.radiationTemperatureLab[locale]) ? styles.activeLink : ""}
-                >
-                  {labNames.radiation}
-                </Link>
-
-                <Link
-                  href={routes.thermophysicalLab[locale]}
-                  onClick={closeMenu}
-                  className={isActive(routes.thermophysicalLab[locale]) ? styles.activeLink : ""}
-                >
-                  {labNames.thermophysical}
-                </Link>
-
-                <Link
-                  href={routes.lazerMetrologyLab[locale]}
-                  onClick={closeMenu}
-                  className={`${isActive(routes.lazerMetrologyLab[locale]) ? styles.activeLink : ""} ${styles.flexLink}`}
-                >
-                  {labNames.lazer}
-                  <span className={styles.newBadge} />
-                </Link>
+                {laboratoriesData.map((lab) => (
+                    <Link
+                        key={lab.slug}
+                        href={lab.href[locale]}
+                        onClick={closeMenu}
+                        className={`${isActive(lab.href[locale]) ? styles.activeLink : ""} ${lab.slug === "lazer-metrology" ? styles.flexLink : ""}`}
+                    >
+                        {lab.title[locale]}
+                        {lab.slug === "lazer-metrology" && <span className={styles.newBadge} />}
+                    </Link>
+                ))}
               </div>
             </div>
 

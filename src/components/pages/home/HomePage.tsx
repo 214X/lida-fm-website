@@ -8,6 +8,7 @@ import { Droplets, Thermometer, Wind, ArrowRight, ArrowUpRight, Lock, RadioTower
 import styles from "./HomePage.module.css";
 import { routes } from "@/lib/routes";
 import { publicationsData, getMonthName } from "@/data/publications";
+import { laboratoriesData } from "@/data/laboratories";
 
 type HomePageProps = {
     locale: Locale;
@@ -32,52 +33,7 @@ export default function HomePage({ locale }: HomePageProps) {
     const content = homeContent[locale];
     const latestPub = publicationsData[0]; // Assuming index 0 is always the newest
 
-    const labs = [
-        {
-            icon: <Droplets size={36} strokeWidth={1.5} />,
-            slug: "humidity",
-            title: locale === "tr" ? "Nem Laboratuvarı" : "Humidity Laboratory",
-            description:
-                locale === "tr"
-                    ? "Bağıl nem, çiy noktası ve mutlak nem ölçümlerinde SI birimlerine izlenebilir kalibrasyon hizmetleri."
-                    : "Traceable calibration services in relative humidity, dew point, and absolute humidity measurements to SI units.",
-            href: routes.humidityLab[locale],
-            active: true,
-        },
-        {
-            icon: <RadioTower size={36} strokeWidth={1.5} />,
-            slug: "radiation-temperature",
-            title: locale === "tr" ? "Radyasyon Sıcaklığı Laboratuvarı" : "Radiation Temperature Laboratory",
-            description:
-                locale === "tr"
-                    ? "Yüksek sıcaklık ölçümlerinde ITS-90'a izlenebilir kalibrasyon. Gümüş donma noktası ve üzerindeki sıcaklıklarda radyasyon ve kontak sıcaklığı ölçümleri."
-                    : "Traceable calibration to ITS-90 for high-temperature measurements, including radiation and contact temperature above the silver freezing point.",
-            href: routes.radiationTemperatureLab[locale],
-            active: true,
-        },
-        {
-            icon: <Layers size={36} strokeWidth={1.5} />,
-            slug: "thermophysical",
-            title: locale === "tr" ? "Termofiziksel Özellikler Laboratuvarı" : "Thermophysical Properties Laboratory",
-            description:
-                locale === "tr"
-                    ? "Isıl iletkenlik, özısı, ısıl yayılım ve emisivite ölçümlerinde BIPM izlenebilirliğiyle yüksek doğruluklu kalibrasyon hizmetleri."
-                    : "High-accuracy calibration services with BIPM traceability in thermal conductivity, specific heat, thermal diffusivity, and emissivity measurements.",
-            href: routes.thermophysicalLab[locale],
-            active: true,
-        },
-        {
-            icon: <GiLaserPrecision size={36} />,
-            slug: "lazer-metrology",
-            title: locale === "tr" ? "Lazer Metroloji Laboratuvarı" : "Laser Metrology Laboratory",
-            description:
-                locale === "tr"
-                    ? "Optik bileşenlerin soğurma, saçılma ve lazer hasar eşiği gibi parametrelerini yüksek hassasiyet ve tekrarlanabilirlikle test eden altyapı."
-                    : "Infrastructure for testing parameters such as absorption, scattering, and laser damage threshold of optical components with high sensitivity.",
-            href: routes.lazerMetrologyLab[locale],
-            active: true,
-        },
-    ];
+    const labs = laboratoriesData;
 
     return (
         <>
@@ -158,13 +114,13 @@ export default function HomePage({ locale }: HomePageProps) {
                             lab.active ? (
                                 <Link
                                     key={lab.slug}
-                                    href={lab.href}
+                                    href={lab.href[locale]}
                                     className={`${styles.labCard} ${styles.labCardActive}`}
                                 >
                                     <div className={styles.labCardIcon}>{lab.icon}</div>
                                     <div className={styles.labCardBody}>
-                                        <h3 className={styles.labCardTitle}>{lab.title}</h3>
-                                        <p className={styles.labCardDesc}>{lab.description}</p>
+                                        <h3 className={styles.labCardTitle}>{lab.title[locale]}</h3>
+                                        <p className={styles.labCardDesc}>{lab.description[locale]}</p>
                                     </div>
                                     <div className={styles.labCardFooter}>
                                         <span className={styles.labCardCta}>
@@ -180,8 +136,8 @@ export default function HomePage({ locale }: HomePageProps) {
                                 >
                                     <div className={styles.labCardIcon}>{lab.icon}</div>
                                     <div className={styles.labCardBody}>
-                                        <h3 className={styles.labCardTitle}>{lab.title}</h3>
-                                        <p className={styles.labCardDesc}>{lab.description}</p>
+                                        <h3 className={styles.labCardTitle}>{lab.title[locale]}</h3>
+                                        <p className={styles.labCardDesc}>{lab.description[locale]}</p>
                                     </div>
                                     <div className={styles.labCardFooter}>
                                         <span className={styles.labCardComingSoon}>

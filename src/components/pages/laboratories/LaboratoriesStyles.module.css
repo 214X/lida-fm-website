@@ -1,0 +1,247 @@
+/* =========================
+  HERO SECTION
+========================= */
+
+.hero {
+  position: relative;
+  min-height: 60vh;
+
+  background-image: url("/images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+
+  color: white;
+  background-color: #343a40;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(223, 31, 38, 0.95) 0%, rgba(223, 31, 38, 0.6) 40%, rgba(169, 36, 36, 0.85) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 10rem 2rem 4rem;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 1rem;
+  margin-bottom: 1.2rem;
+  backdrop-filter: blur(4px);
+}
+
+.heroContent h1 {
+  font-size: clamp(2.2rem, 6vw, 5rem);
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.heroContent p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  opacity: 0.9;
+  max-width: 720px;
+  line-height: 1.7;
+}
+
+/* =========================
+  STATS STRIP
+========================= */
+
+.statsStrip {
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.statsInner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--text-grey);
+}
+
+.statsInner strong {
+  color: var(--tubitak-red);
+  font-size: 1.05rem;
+}
+
+/* =========================
+  LABORATORIES GRID
+========================= */
+
+.labsWrapper {
+  padding: 4rem 2rem;
+  background: #ffffff;
+  min-height: 50vh;
+}
+
+.labsGrid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Base card ── */
+.labCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  height: 100%;
+}
+
+/* ── Active (clickable) card ── */
+.labCardActive {
+  cursor: pointer;
+}
+
+.labCardActive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #DF1F26;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.labCardActive:hover::before {
+  transform: scaleX(1);
+}
+
+.labCardActive:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: #cbd5e1;
+}
+
+/* ── Inactive (coming soon) card ── */
+.labCardInactive {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ── Icon wrapper ── */
+.labCardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #fff0f0;
+  color: #DF1F26;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Body ── */
+.labCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.labCardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.labCardDesc {
+  font-size: 0.93rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Footer (CTA / badge) ── */
+.labCardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.labCardCta {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #DF1F26;
+  letter-spacing: 0.02em;
+}
+
+.labCardActive .labCardFooter {
+  color: #DF1F26;
+}
+
+.labCardComingSoon {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: #f1f5f9;
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+}
+
+/* =========================
+  RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .labsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 350px;
+    height: auto;
+    padding: 4rem 0;
+  }
+
+  .labsWrapper {
+    padding: 3rem 1.25rem;
+  }
+}

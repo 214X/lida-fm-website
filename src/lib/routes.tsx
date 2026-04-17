@@ -40,6 +40,10 @@ export const routes: Record<
     lazerMetrologyLab: {
         tr: "/laboratuvarlar/lazer-metroloji",
         en: "/en/laboratories/lazer-metrology",
-    }
+    },
     // LABS ENDS
+    laboratories: {
+        tr: "/laboratuvarlar",
+        en: "/en/laboratories",
+    }
 };
