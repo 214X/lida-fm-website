@@ -85,7 +85,63 @@
 }
 
 /* ============================================================
-   PUBLICATIONS WRAPPER
+    CATEGORY TABS
+============================================================ */
+.categoryTabs {
+    max-width: 1180px;
+    margin: 2.5rem auto 0;
+    padding: 0 2rem;
+    display: flex;
+    gap: 2rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.tabBtn {
+    all: unset;
+    cursor: pointer;
+    padding: 0.8rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-grey);
+    position: relative;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.tabBtnHover:hover {
+    color: var(--text-primary);
+}
+
+.activeTab {
+    color: var(--tubitak-red);
+}
+
+.activeTab::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--tubitak-red);
+    border-radius: 10px 10px 0 0;
+}
+
+/* ============================================================
+    FILTER BAR — Lab dropdown
+============================================================ */
+.filterBar {
+    max-width: 1180px;
+    margin: 1.5rem auto 0;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+/* ============================================================
+    PUBLICATIONS WRAPPER
 ============================================================ */
 .publicationsWrapper {
     max-width: 1180px;
@@ -95,10 +151,6 @@
     flex-direction: column;
     gap: 1.5rem;
 }
-
-/* ============================================================
-    PUBLICATION CARD  — modern card style
-============================================================ */
 .pubCard {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -198,7 +250,15 @@
     line-height: 1.45;
     color: var(--text-primary);
     transition: color 0.2s ease;
-    margin: 0;
+    margin: 0.2rem 0 0.5rem;
+}
+
+.pubContributors {
+    font-size: 0.9rem;
+    color: var(--text-grey);
+    font-style: italic;
+    margin-bottom: 0.8rem;
+    opacity: 0.9;
 }
 
 .pubCard:hover .pubTitle {

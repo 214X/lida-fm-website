@@ -279,7 +279,7 @@
 }
 
 .detailBackInner {
-  max-width: 1180px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0.75rem 2rem;
 }
@@ -301,7 +301,7 @@
 }
 
 .detailContainer {
-  max-width: 1180px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 4rem 2rem 6rem;
 }
@@ -696,8 +696,7 @@
 .galleryMain {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 65vh;
+  aspect-ratio: 16 / 10;
   border-radius: 12px;
   overflow: hidden;
   background: #f0f0ef;

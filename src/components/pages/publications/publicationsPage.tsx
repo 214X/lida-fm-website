@@ -5,7 +5,7 @@ import { Locale } from "@/types/locale";
 import { publicationsContent } from "./publicationsContent";
 import styles from "./PublicationsStyles.module.css";
 import PublicationCard from "./components/publication";
-import { publicationsData, Publication, LabKey } from "@/data/publications";
+import { publicationsData, Publication, LabKey, PublicationType } from "@/data/publications";
 
 const LAB_NAMES: Record<LabKey, Record<Locale, string>> = {
   lazer: { tr: "Lazer Metroloji Laboratuvarı", en: "Laser Metrology Laboratory" },
@@ -21,12 +21,20 @@ type PublicationsPageProps = {
 export default function PublicationsPage({ locale }: PublicationsPageProps) {
   const content = publicationsContent[locale];
   const [activeTab, setActiveTab] = useState<LabKey | "all">("all");
+  const [activeCategory, setActiveCategory] = useState<PublicationType | "all">("all");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Group by lab
+  // 1. First filter by Category and Lab
+  const filteredPubs = publicationsData.filter(pub => {
+    const matchesCategory = activeCategory === "all" || pub.type === activeCategory;
+    const matchesLab = activeTab === "all" || pub.labKey === activeTab;
+    return matchesCategory && matchesLab;
+  });
+
+  // 2. Then group the filtered results by lab for rendering
   const groupedPubs: Partial<Record<LabKey, Publication[]>> = {};
-  publicationsData.forEach(pub => {
+  filteredPubs.forEach(pub => {
     const key = pub.labKey || "lazer";
     if (!groupedPubs[key]) groupedPubs[key] = [];
     groupedPubs[key].push(pub);
@@ -34,12 +42,10 @@ export default function PublicationsPage({ locale }: PublicationsPageProps) {
 
   const sortedKeys: LabKey[] = ["lazer", "humidity", "radiation", "thermophysical"];
 
-  const displayedCount = activeTab === "all"
-    ? publicationsData.length
-    : (groupedPubs[activeTab]?.length || 0);
+  const displayedCount = filteredPubs.length;
 
   const allOptions: { value: LabKey | "all"; label: string }[] = [
-    { value: "all", label: locale === "tr" ? "Tüm Yayınlar" : "All Publications" },
+    { value: "all", label: locale === "tr" ? "Tüm Laboratuvarlar" : "All Laboratories" },
     ...sortedKeys.map(key => ({ value: key as LabKey | "all", label: LAB_NAMES[key][locale] })),
   ];
 
@@ -71,6 +77,28 @@ export default function PublicationsPage({ locale }: PublicationsPageProps) {
           </p>
         </div>
       </section>
+
+      {/* CATEGORY TABS */}
+      <div className={styles.categoryTabs}>
+        <button
+          className={`${styles.tabBtn} ${activeCategory === "all" ? styles.activeTab : ""}`}
+          onClick={() => setActiveCategory("all")}
+        >
+          {locale === "tr" ? "Tümü" : "All"}
+        </button>
+        <button
+          className={`${styles.tabBtn} ${activeCategory === "article" ? styles.activeTab : ""}`}
+          onClick={() => setActiveCategory("article")}
+        >
+          {locale === "tr" ? "MAKALELER" : "ARTICLES"}
+        </button>
+        <button
+          className={`${styles.tabBtn} ${activeCategory === "conference" ? styles.activeTab : ""}`}
+          onClick={() => setActiveCategory("conference")}
+        >
+          {locale === "tr" ? "BİLDİRİLER" : "CONFERENCE PAPERS"}
+        </button>
+      </div>
 
       {/* STATS STRIP */}
       <div className={styles.statsStrip}>
@@ -169,7 +197,10 @@ export default function PublicationsPage({ locale }: PublicationsPageProps) {
                         description={pub.description}
                         href={pub.href}
                         locale={locale}
-                        journal={pub.journal}
+
+                        contributors={pub.contributors}
+                        language={pub.language}
+                        type={pub.type}
                       />
                     ))}
                   </div>
