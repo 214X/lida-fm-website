@@ -211,26 +211,32 @@ export default function HomePage({ locale }: HomePageProps) {
                                     {latestPub.day} {getMonthName(latestPub.month, locale)} {latestPub.year}
                                 </div>
                                 <span className={styles.latestPubBadge}>
-                                    {locale === "tr" ? "Makale" : "Article"}
+                                    {latestPub.type === "article"
+                                        ? (locale === "tr" ? "Makale" : "Article")
+                                        : (locale === "tr" ? "Konferans Bildirisi" : "Conference Paper")}
                                 </span>
-                                {latestPub.journal && (
-                                    <span className={styles.latestPubBadge}>{latestPub.journal}</span>
-                                )}
+                                <span className={styles.latestPubBadge}>
+                                    {latestPub.language === "en"
+                                        ? (locale === "tr" ? "İngilizce" : "English")
+                                        : (locale === "tr" ? "Türkçe" : "Turkish")}
+                                </span>
                             </div>
-                            
+
                             <h3 className={styles.latestPubName}>{latestPub.title}</h3>
                             <p className={styles.latestPubDesc}>{latestPub.description}</p>
-                            
+
                             <div className={styles.latestPubFooter}>
-                                <a 
-                                    href={latestPub.href} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer" 
-                                    className={styles.latestPubLink}
-                                >
-                                    {content.readMoreBtn}
-                                    <ArrowUpRight size={16} strokeWidth={2} />
-                                </a>
+                                {latestPub.href && (
+                                    <a
+                                        href={latestPub.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={styles.latestPubLink}
+                                    >
+                                        {content.readMoreBtn}
+                                        <ArrowUpRight size={16} strokeWidth={2} />
+                                    </a>
+                                )}
                                 <Link 
                                     href={routes.publications[locale]} 
                                     className={styles.latestPubViewAll} 
